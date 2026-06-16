@@ -34,7 +34,28 @@ To ensure seamless integration into the central museum website platform, our dev
 * **Component Name:** *Think what to add here*
 * **Central Website Compatibility Context:** This feature is built entirely as [explanation]
 * **Step-by-Step User Flow & Functionality Plan:**
-  1. steps to be put
+
+### 1. Initial State — The Offline Philippines
+Users are introduced to a visual representation of the Philippines' early computer network environment before 1994. The interface displays isolated local networks and Bulletin Board Systems (BBS) that operated independently without a direct connection to the global Internet. A short historical introduction provides context on the limitations of digital communication during this period.
+
+### 2. Selecting the Connection Route
+Users interact with a network map by selecting the PLDT facility in Makati and the Sprint network endpoint in the United States. The simulation highlights the international connection route that would eventually link the Philippines to the global Internet.
+
+### 3. Establishing the Link
+Users initiate the historical connection by pressing the **"Connect to the World"** button. An animated data packet travels through the Cisco 7000 router and across the 64 kbps Sprint connection. Audio cues and visual feedback simulate the process of a successful network initialization.
+
+### 4. The Historic Moment — March 29, 1994, 1:15 AM
+Once the connection is successfully established, the interface transitions into a commemorative scene marking the Philippines' first official connection to the Internet. A timeline marker appears to emphasize the historical significance of March 29, 1994, at 1:15 AM.
+
+### 5. Exploring the Impact
+Users can explore interactive timeline cards that showcase the developments following the birth of the Philippine Internet, including:
+* The emergence and growth of Internet Service Providers (ISPs)
+* The expansion of national Internet infrastructure
+* The rise of online communities and digital communication
+* The transition to modern broadband and mobile Internet technologies
+
+### 6. Replay & Compare
+Users may restart the simulation to experience the historic connection process again. An optional comparison feature allows users to compare the original 64 kbps connection with modern Internet speeds, illustrating the technological progress of the Philippines' digital infrastructure.
 
 #### Mobile-Responsive Layout Plan
 * **Desktop Layout Configuration:** Describe how content and interactive elements will be arranged on larger screens (e.g., side-by-side columns, fixed widgets, split panels).
