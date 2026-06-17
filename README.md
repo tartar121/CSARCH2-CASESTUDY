@@ -49,6 +49,8 @@ Sample Images:
 
 ![alt text](SPI-Smart-Communications-Gallery8.jpg)
 
+* All assets are rendered client-side, eliminating the need for external APIs or backend services and ensuring compatibility with the central virtual museum website. The component is designed to support desktop and mobile devices while maintaining smooth performance through optimized 3D assets and responsive controls.
+
 ### Step-by-Step User Flow & Functionality Plan:
 #### 1. Initial State — The Offline Philippines
 Users are introduced to a visual representation of the Philippines' early computer network environment before 1994. The interface displays isolated local networks and Bulletin Board Systems (BBS) that operated independently without a direct connection to the global Internet. A short historical introduction provides context on the limitations of digital communication during this period.
@@ -72,7 +74,6 @@ Users can explore interactive timeline cards that showcase the developments foll
 #### 6. Replay & Compare
 Users may restart the simulation to experience the historic connection process again. An optional comparison feature allows users to compare the original 64 kbps connection with modern Internet speeds, illustrating the technological progress of the Philippines' digital infrastructure.
 
-* All assets are rendered client-side, eliminating the need for external APIs or backend services and ensuring compatibility with the central virtual museum website. The component is designed to support desktop and mobile devices while maintaining smooth performance through optimized 3D assets and responsive controls.
 
 ---
 ## Mobile-Responsive Layout Plan
