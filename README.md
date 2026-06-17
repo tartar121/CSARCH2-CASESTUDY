@@ -33,8 +33,8 @@ To ensure seamless integration into the central museum website platform, our dev
 * **Styling Engine:** Tailwind CSS for fast utility rendering and responsive viewport fluid design
 
 #### Proposed Interactive Element (Detailed Compatibility Specification)
-* **Component Name:** *Think what to add here*
-* **Central Website Compatibility Context:** This feature is built entirely as [explanation]
+* **Component Name:** PhilNet 1994: The First Connection Simulator
+* **Central Website Compatibility Context:** This feature is built entirely as a client-side React component embedded within an MDX page and styled using Tailwind CSS. All animations, interactions, and state management are handled locally through React hooks without requiring external APIs, databases, or backend services. This ensures seamless compatibility with the Astro-based museum template and allows the component to be easily integrated into the central virtual museum website. The simulation is designed to be lightweight, responsive, and self-contained, making it suitable for both desktop and mobile viewing environments.
 
 ### Step-by-Step User Flow & Functionality Plan:
 #### 1. Initial State — The Offline Philippines
