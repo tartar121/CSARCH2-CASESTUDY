@@ -33,8 +33,20 @@ To ensure seamless integration into the central museum website platform, our dev
 * **Styling Engine:** Tailwind CSS for fast utility rendering and responsive viewport fluid design
 
 #### Proposed Interactive Element (Detailed Compatibility Specification)
-* **Component Name:** *Think what to add here*
-* **Central Website Compatibility Context:** This feature is built entirely as [explanation]
+* **Component Name:** *(Smart) Internet Cafe*
+* **Central Website Compatibility Context:** This feature is to be built by launching a website with the use of Three.js and Javascript. The interactive model is built using blender where the audience can interact by looking into the internet cafe's interpreted architecture. The model is a near replica of the actual models provided by Smart and Storage Providers Inc. which consists of the storage van's interior and exterior alongside the interpreted setup. This model aims to provide context into the first-mover action in providing internet access to provinces and remote areas in the late 2000's.
+
+Sample Images:
+
+**Front**
+![alt text](SPI-Smart-Communications-Gallery11.jpg)
+
+**Back**
+![alt text](SPI-Smart-Communications-Gallery9.jpg)
+
+**Inside**
+![alt text](SPI-Smart-Communications-Gallery8.jpg)
+
 
 ### Step-by-Step User Flow & Functionality Plan:
 #### 1. Initial State — The Offline Philippines
@@ -68,18 +80,25 @@ Users may restart the simulation to experience the historic connection process a
 * **Media and Interactive Component Scaling:** Describe how images, diagrams, animations, and simulations should resize or adjust to maintain usability across different screen sizes.
 * **Accessibility Considerations:** Specify any mobile accessibility features to prioritize, such as readable text sizes, touch-friendly buttons, sufficient spacing, and screen-reader compatibility.
 ---
-## Tentative Style Guide Snapshot – Proposed Virtual Exhibit Design Layout
-* **Visual Motif:** idea 
-* **Color Palette Scheme:**
-  * **Primary Background Canvas:** Color
-  * **Core Typography:** Color
-* **Typography Hierarchy:**
-  * **Section Headings:** a font
-  * **Body Narrative Text:** different font from heading
- * (put snapshot/picture of design)
+## Style Guide Snapshot – Proposed Virtual Exhibit Design Layout
+
+![alt text](image1.png)
+![alt text](image2.png)
+![alt text](image3.png)
+![alt text](image4.png)
+![alt text](image5.png)
+
+Interactive 3D Model: https://app.spline.design/file/8426f53a-b09e-41ed-9bab-772b7301aba4
+
+Figma Representation: https://www.figma.com/make/oOeB9LGiYgIPHvvayizKVZ/Interactive-Internet-History-Simulation?t=XEQHxV9rSlF7AfFR-0
+
+**Disclaimer**: The visualizations provided is AI generated using the Figma AI Website Generator for the website and Meshy AI 3D generator for the (Smart) Internet Cafe. This representation will only be used for the proposal stage of the project
+
 ---
 ## References
 * [The Urban Roamer: Internet in the Philippines - 20 Years Online](https://www.theurbanroamer.com/internet-in-the-philippines-20-years-online/)
 * [The Ayson Chronicles: The Night Benjie Tan Hooked up the Philippines to the Internet](https://jimayson.wordpress.com/2011/08/13/the-night-benjie-hooked-up-the-philippines-to-the-internet/)
+* [PhilStar: 'Broadbanding the Country Side'] (https://www.philstar.com/business/telecoms/2006/07/08/346240/smart-click-145broadbanding146-countryside?fbclid=IwY2xjawSfOLlleHRuA2FlbQIxMABicmlkETFMT2Z6c3V5TjhqTDNLRnR5c3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHtJRUukgaUhJPYIBIoHdc4-gt6I1jg4wDjodWU2OGsFGzjE6k8XaWxFvxSqj_aem_eTz5VuNknJzzfyG3-DEvGA)
+* [Storage Providers Inc - Smart Communications Inc. Internet Cafe] (https://storageproviders.ph/smart-communications-inc/?fbclid=IwY2xjawSfOO1leHRuA2FlbQIxMABicmlkETFMT2Z6c3V5TjhqTDNLRnR5c3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHtJRUukgaUhJPYIBIoHdc4-gt6I1jg4wDjodWU2OGsFGzjE6k8XaWxFvxSqj_aem_eTz5VuNknJzzfyG3-DEvGA)
 
 > **Note:** This repository serves as the initial proposal and development hub for Group 9's virtual museum exhibit page. All documentation, incremental plans, and component files will be managed here. The details outlined herein are subject to change prior to final submission.
