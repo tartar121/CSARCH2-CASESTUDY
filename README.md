@@ -35,7 +35,7 @@ To ensure seamless integration into the central museum website platform, our dev
 #### Proposed Interactive Element (Detailed Compatibility Specification)
 
 * **Component Name:** *(Smart) Internet Cafe*
-* **Central Website Compatibility Context:** This feature is to be built by launching a website with the use of Three.js and Javascript. The interactive model is built using blender where the audience can interact by looking into the internet cafe's interpreted architecture. The model is a near replica of the actual models provided by Smart and Storage Providers Inc. which consists of the storage van's interior and exterior alongside the interpreted setup. This model aims to provide context into the first-mover action in providing internet access to provinces and remote areas in the late 2000's.
+* **Central Website Compatibility Context:** This feature is built using Three.js and JavaScript and embedded within the Astro-based exhibit as an interactive React component. The experience utilizes a 3D model created in Blender, allowing visitors to freely explore a virtual reconstruction of a Smart Internet Café deployment unit. The model is based on publicly documented Smart Communications and Storage Providers Inc. mobile Internet café initiatives and includes both the exterior and interior layouts of the storage van alongside an interpreted networking setup.
 
 Sample Images:
 
@@ -72,14 +72,21 @@ Users can explore interactive timeline cards that showcase the developments foll
 #### 6. Replay & Compare
 Users may restart the simulation to experience the historic connection process again. An optional comparison feature allows users to compare the original 64 kbps connection with modern Internet speeds, illustrating the technological progress of the Philippines' digital infrastructure.
 
+* All assets are rendered client-side, eliminating the need for external APIs or backend services and ensuring compatibility with the central virtual museum website. The component is designed to support desktop and mobile devices while maintaining smooth performance through optimized 3D assets and responsive controls.
+
 ---
 ## Mobile-Responsive Layout Plan
-* **Desktop Layout Configuration:** Describe how content and interactive elements will be arranged on larger screens (e.g., side-by-side columns, fixed widgets, split panels).
-* **Tablet Layout Behavior:** Explain how the exhibit should adapt to medium-sized screens, including any resizing, repositioning, or stacking of components.
-* **Mobile Layout Structure:** Describe how content will be reorganized on smartphones (e.g., single-column layout, order of sections, placement of interactive elements).
-* **Responsive Navigation Design:** Explain how users will navigate the exhibit on smaller devices (e.g., collapsible menu, sticky navigation, simplified controls).
-* **Media and Interactive Component Scaling:** Describe how images, diagrams, animations, and simulations should resize or adjust to maintain usability across different screen sizes.
-* **Accessibility Considerations:** Specify any mobile accessibility features to prioritize, such as readable text sizes, touch-friendly buttons, sufficient spacing, and screen-reader compatibility.
+* **Desktop Layout Configuration**: The structure of the exhibit uses a side-by-side layout with the text content on the left and a sticky interactive simulation on the right. This guides the user through the Philippine Internet connection timeline in a continuous flow.
+
+* **Tablet Layout Behavior**: The desktop layout configuration will be used for the landscape orientation of the tablet, while the mobile layout will be utilized for the portrait orientation of the tablet.
+
+* **Mobile Layout Structure**: The elements of the exhibit will follow a single column layout which is perfectly designed for smartphones. The interactive simulation is positioned as a sticky element within the layout, remaining visible alongside the scrolling content that guides the user throughout the exhibit.
+
+* **Responsive Navigation Design**: For desktop layout, a sticky navigation bar will be implemented to provide quick access to major sections of the exhibit. As for the mobile layout, a collapsible menu is used to save space for the other elements of the exhibit.
+
+* **Media and Interactive Component Scaling**: The webpage will have a responsive layout where it adapts smoothly to different screen sizes. This ensures consistent readability, proportional scaling, and usability across all screen sizes.
+
+* **Accessibility Considerations**: During the development of the exhibit, the sizes of text and clickable elements (if any), will be adjusted until it's comfortably readable and touch-friendly for the user. Lastly, the spacing of each element shall be adjusted until all content is visually balanced, ensuring an intuitive user experience across all devices.
 ---
 ## Style Guide Snapshot – Proposed Virtual Exhibit Design Layout
 
