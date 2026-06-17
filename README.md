@@ -46,6 +46,7 @@ Sample Images:
 ![alt text](SPI-Smart-Communications-Gallery9.jpg)
 
 **Inside**
+
 ![alt text](SPI-Smart-Communications-Gallery8.jpg)
 
 ### Step-by-Step User Flow & Functionality Plan:
