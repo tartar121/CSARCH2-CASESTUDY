@@ -33,6 +33,7 @@ To ensure seamless integration into the central museum website platform, our dev
 * **Styling Engine:** Tailwind CSS for fast utility rendering and responsive viewport fluid design
 
 #### Proposed Interactive Element (Detailed Compatibility Specification)
+<<<<<<< HEAD
 * **Component Name:** *(Smart) Internet Cafe*
 * **Central Website Compatibility Context:** This feature is to be built by launching a website with the use of Three.js and Javascript. The interactive model is built using blender where the audience can interact by looking into the internet cafe's interpreted architecture. The model is a near replica of the actual models provided by Smart and Storage Providers Inc. which consists of the storage van's interior and exterior alongside the interpreted setup. This model aims to provide context into the first-mover action in providing internet access to provinces and remote areas in the late 2000's.
 
@@ -47,6 +48,12 @@ Sample Images:
 **Inside**
 ![alt text](SPI-Smart-Communications-Gallery8.jpg)
 
+=======
+* **Component Name:** Smart Internet Cafe
+* **Central Website Compatibility Context:** This feature is built using Three.js and JavaScript and embedded within the Astro-based exhibit as an interactive React component. The experience utilizes a 3D model created in Blender, allowing visitors to freely explore a virtual reconstruction of a Smart Internet Café deployment unit. The model is based on publicly documented Smart Communications and Storage Providers Inc. mobile Internet café initiatives and includes both the exterior and interior layouts of the storage van alongside an interpreted networking setup.
+
+* All assets are rendered client-side, eliminating the need for external APIs or backend services and ensuring compatibility with the central virtual museum website. The component is designed to support desktop and mobile devices while maintaining smooth performance through optimized 3D assets and responsive controls.
+>>>>>>> bad62ceb614c9dc31b553a512ec2c19ed39c4429
 
 ### Step-by-Step User Flow & Functionality Plan:
 #### 1. Initial State — The Offline Philippines
