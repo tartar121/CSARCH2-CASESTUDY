@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pilipinas Online - The Birth of Philippine Internet</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&family=Inter:wght@300;400;600&display=swap');
+
+        :root {
+            --bg-color: #050b14;
+            --card-bg: rgba(13, 27, 42, 0.6);
+            --border-color: rgba(30, 58, 138, 0.3);
+            --text-primary: #ffffff;
+            --text-secondary: #94a3b8;
+            --accent-yellow: #f59e0b;
+            --accent-red: #ef4444;
+            --accent-green: #10b981;
+            --accent-blue: #3b82f6;
+            --connection-blue: #60a5fa;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            background-image: radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 0);
+            background-size: 40px 40px;
+            overflow-x: hidden;
+        }
+
+        .exhibit-container {
+            width: 100%;
+            max-width: 1150px;
+            background: linear-gradient(135deg, #07111e 0%, #03070c 100%);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Header Components */
+        .header-bar {
+            display: flex; justify-content: space-between; align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-bottom: 15px; margin-bottom: 30px;
+        }
+        .brand { position: relative; padding-left: 15px; }
+        .brand::before {
+            content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px;
+            background: linear-gradient(to bottom, var(--accent-blue) 50%, var(--accent-red) 50%);
+        }
+        .brand-title { font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: 14px; letter-spacing: 1px; color: var(--accent-yellow); text-transform: uppercase; }
+        .brand-subtitle { font-size: 11px; color: var(--text-secondary); margin-top: 2px; }
+        .status-indicator { display: flex; align-items: center; gap: 8px; font-family: 'Share Tech Mono', monospace; font-size: 11px; letter-spacing: 1px; }
+        .status-dot { width: 6px; height: 6px; border-radius: 50%; }
+        .status-offline { color: var(--accent-red); }
+        .status-offline .status-dot { background-color: var(--accent-red); box-shadow: 0 0 8px var(--accent-red); }
+        .status-online { color: var(--accent-green); }
+        .status-online .status-dot { background-color: var(--accent-green); box-shadow: 0 0 8px var(--accent-green); }
+
+        /* Dynamic App Screen Frameworks */
+        .app-screen { display: none; animation: fadeIn 0.4s ease-in-out forwards; }
+        .app-screen.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Hero Blocks */
+        .hero-section { text-align: center; max-width: 700px; margin: 0 auto 35px auto; }
+        .simulation-tag { display: inline-block; font-family: 'Share Tech Mono', monospace; font-size: 11px; color: var(--accent-red); border: 1px solid rgba(239, 68, 68, 0.3); padding: 3px 12px; border-radius: 20px; margin-bottom: 15px; background: rgba(239, 68, 68, 0.05); }
+        .simulation-tag.selecting { color: var(--accent-blue); border-color: rgba(59, 130, 246, 0.3); background: rgba(59, 130, 246, 0.05); }
+        .main-title { font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 38px; margin-bottom: 12px; }
+        .main-title span { color: var(--accent-yellow); }
+        .description { color: var(--text-secondary); font-size: 14px; line-height: 1.6; margin-bottom: 15px; font-weight: 300; }
+        .instruction-text { font-family: 'Share Tech Mono', monospace; color: var(--accent-green); font-size: 13px; }
+
+        /* Route Selector Pills */
+        .endpoint-pills { display: flex; justify-content: center; gap: 15px; margin: 20px 0; }
+        .pill { font-family: 'Share Tech Mono', monospace; font-size: 12px; border: 1px solid rgba(255, 255, 255, 0.1); padding: 6px 16px; border-radius: 20px; color: rgba(255, 255, 255, 0.4); display: flex; align-items: center; gap: 6px; }
+        .pill.selected { border-color: var(--connection-blue); color: var(--connection-blue); background: rgba(96, 165, 250, 0.05); }
+
+        /* Layout Workspaces */
+        .workspace-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 25px; }
+        .map-card { background-color: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px; padding: 20px; position: relative; min-height: 520px; display: flex; flex-direction: column; }
+        .map-header { font-family: 'Share Tech Mono', monospace; font-size: 11px; color: var(--text-secondary); letter-spacing: 1px; display: flex; gap: 15px; margin-bottom: 15px; }
+        .map-header span::before { content: '●'; color: var(--accent-green); margin-right: 5px; }
+        .map-canvas { flex-grow: 1; position: relative; border: 1px solid rgba(255, 255, 255, 0.03); background-image: linear-gradient(rgba(255,255,255,0.01) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.01) 1px, transparent 1px); background-size: 30px 30px; background-position: center; border-radius: 6px; overflow: hidden; }
+
+        /* Map Asset Wrapper */
+        .philippines-map-wrapper { position: absolute; top: 10px; bottom: 10px; left: 40%; transform: translateX(-50%); height: calc(100% - 20px); width: auto; max-width: 320px; }
+        .ph-map-img { height: 100%; width: 100%; object-fit: contain; opacity: 0.8; filter: drop-shadow(0 0 15px rgba(30, 58, 138, 0.2)); display: block; }
+        
+        /* Node marker targeted over pink Makati zone */
+        .network-node-dot { width: 14px; height: 14px; background-color: var(--accent-yellow); border-radius: 50%; box-shadow: 0 0 12px var(--accent-yellow); position: absolute; cursor: pointer; transition: transform 0.2s; z-index: 10; }
+        .node-pldt { top: 52.5%; left: 52%; transform: translate(-50%, -50%); }
+        .node-pldt.selected { background-color: var(--accent-yellow); width: 16px; height: 16px; animation: nodePulse 1.5s infinite; }
+        @keyframes nodePulse { 0% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.7); } 70% { box-shadow: 0 0 0 10px rgba(245, 158, 11, 0); } 100% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0); } }
+
+        /* Typography label anchored adjacent to pink territory */
+        .node-label { font-family: 'Share Tech Mono', monospace; font-size: 11px; color: #ffffff; position: absolute; white-space: nowrap; z-index: 10; font-weight: 600; }
+        .label-pldt { top: 50.5%; left: 58%; color: #a7f3d0; text-shadow: 0 1px 5px #000, 0 0 3px #000; }
+        .label-pldt span { display: block; font-size: 9px; color: var(--text-secondary); font-weight: normal; }
+
+        /* Remote End Destination Box with light blue accents */
+        .us-node-box { position: absolute; right: 25px; top: 40%; border: 1px solid rgba(255, 255, 255, 0.1); background: rgba(8, 17, 30, 0.9); border-radius: 8px; padding: 12px 15px; text-align: center; font-family: 'Share Tech Mono', monospace; cursor: pointer; transition: all 0.3s; }
+        .us-node-box.selected { border-color: var(--connection-blue); box-shadow: 0 0 15px rgba(96, 165, 250, 0.3); }
+        .us-node-box .title { font-size: 10px; color: var(--text-secondary); }
+        .us-node-box .gateway { font-size: 11px; color: var(--text-primary); margin: 4px 0; font-weight: bold; }
+        .us-node-box .subtext { font-size: 8px; color: rgba(255, 255, 255, 0.4); }
+        .us-node-box .us-icon { width: 0; height: 0; border-left: 6px solid transparent; border-right: 6px solid transparent; border-bottom: 10px solid var(--connection-blue); margin: 4px auto 0 auto; filter: drop-shadow(0 0 4px var(--connection-blue)); }
+
+        /* SVG Connection Line re-colored to natural light blue */
+        .map-svg-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 8; }
+        .connection-link { stroke: var(--connection-blue); stroke-width: 2.5; stroke-dasharray: 6; animation: dash 20s linear infinite; opacity: 0; transition: opacity 0.3s; filter: drop-shadow(0 0 6px var(--connection-blue)); }
+        @keyframes dash { to { stroke-dashoffset: -1000; } }
+
+        /* Bottom Status Label Area inside canvas */
+        .label-archipelago { position: absolute; bottom: 15px; left: 50%; transform: translateX(-50%); font-family: 'Share Tech Mono', monospace; font-size: 10px; color: rgba(255, 255, 255, 0.25); letter-spacing: 1px; white-space: nowrap; z-index: 5; transition: color 0.3s; }
+
+        /* Right Panel Modules */
+        .info-panel { display: flex; flex-direction: column; gap: 20px; }
+        .status-card { background-color: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px; padding: 25px; flex-grow: 1; }
+        .status-card-title { font-family: 'Orbitron', sans-serif; font-size: 12px; color: var(--accent-yellow); letter-spacing: 1px; margin-bottom: 20px; font-weight: 700; }
+        .status-row { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.04); font-family: 'Share Tech Mono', monospace; font-size: 13px; }
+        .status-label { color: var(--text-secondary); }
+        .status-value.isolated { color: var(--accent-red); font-weight: bold; }
+        .status-footer-text { margin-top: 25px; font-size: 12px; color: var(--text-secondary); line-height: 1.5; font-weight: 300; }
+
+        .action-btn { background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 8px; padding: 15px; text-align: center; font-family: 'Orbitron', sans-serif; font-size: 12px; letter-spacing: 2px; color: rgba(255, 255, 255, 0.3); text-transform: uppercase; cursor: not-allowed; transition: all 0.3s; text-decoration: none; }
+        .action-btn.ready { background: linear-gradient(to right, #1e3a8a, #2563eb); border-color: var(--connection-blue); color: #ffffff; cursor: pointer; box-shadow: 0 4px 14px rgba(96, 165, 250, 0.3); }
+
+        /* Screen 2: Connection Console and Terminal */
+        .established-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 25px; }
+        .terminal-card { background: #02060c; border: 1px solid #1e293b; border-radius: 12px; padding: 20px; font-family: 'Share Tech Mono', monospace; font-size: 13px; color: #34d399; min-height: 300px; }
+        .terminal-card .header-title { color: var(--text-secondary); margin-bottom: 12px; font-size: 11px; }
+        .terminal-line { margin-bottom: 6px; opacity: 0; transform: translateX(-50px); }
+        .terminal-line.print { animation: termPrint 0.3s forwards; }
+        @keyframes termPrint { to { opacity: 1; transform: translateX(0); } }
+        .terminal-accent { color: var(--accent-yellow); }
+
+        .historic-banner { background: rgba(16, 185, 129, 0.04); border: 1px solid rgba(16, 185, 129, 0.2); border-radius: 12px; padding: 30px; text-align: center; }
+        .sun-icon { font-size: 32px; color: var(--accent-yellow); margin-bottom: 10px; animation: rotateSun 20s linear infinite; width: fit-content; margin: 0 auto 10px auto; }
+        @keyframes rotateSun { to { transform: rotate(360deg); } }
+        .historic-title { font-family: 'Orbitron', sans-serif; font-size: 20px; color: var(--accent-green); letter-spacing: 1px; margin-bottom: 5px; }
+        .historic-date { font-family: 'Share Tech Mono', monospace; font-size: 12px; color: var(--text-secondary); margin-bottom: 20px; }
+        .historic-text { font-size: 13px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 25px; text-align: justify; }
+        
+        .metric-pills-row { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-bottom: 25px; }
+        .metric-pill { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); padding: 8px 15px; border-radius: 6px; text-align: center; min-width: 100px; }
+        .metric-pill .val { font-family: 'Share Tech Mono', monospace; font-size: 14px; color: var(--accent-yellow); font-weight: bold; }
+        .metric-pill .lbl { font-size: 9px; color: var(--text-secondary); text-transform: uppercase; margin-top: 2px; }
+
+        .system-credits { text-align: center; font-family: 'Share Tech Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.15); margin-top: 20px; letter-spacing: 0.5px; }
+    </style>
+</head>
+<body>
+
+    <div class="exhibit-container">
+        <header class="header-bar">
+            <div class="brand">
+                <div class="brand-title">Kumusta Mundo: Ang Kaarawan ng Lokal Networks sa Pilipinas</div>
+                <div class="brand-subtitle">The Birth of Philippine Internet — March 29, 1994</div>
+            </div>
+            <div class="status-indicator status-offline" id="globalStatus">
+                <span class="status-dot"></span>
+                <span class="status-txt">OFFLINE</span>
+            </div>
+        </header>
+
+        <div class="app-screen active" id="screenSelection">
+            <section class="hero-section">
+                <div class="simulation-tag" id="simTag">SIMULATION • PRE-1994 PHILIPPINES</div>
+                <h1 class="main-title" id="screen1Title">The Philippines, <span>Offline</span></h1>
+                <p class="description" id="screen1Desc">
+                    Before March 29, 1994, the Philippines had no direct connection to the global Internet. Universities and businesses operated isolated Bulletin Board Systems and UUCP networks — islands of data in a pre-connected archipelago.
+                </p>
+                <div class="instruction-text" id="instructionTxt">↓ Click the PLDT Makati node on the map to begin the simulation</div>
+                
+                <div class="endpoint-pills" id="routePills" style="display: none;">
+                    <div class="pill" id="pillPldt">PLDT Makati</div>
+                    <div class="pill" id="pillSprint">Sprint USA</div>
+                </div>
+            </section>
+
+            <main class="workspace-grid">
+                <section class="map-card">
+                    <div class="map-header">
+                        <span>NETWORK MAP</span>
+                        <span>ASIA-PACIFIC REGION</span>
+                    </div>
+                    
+                    <div class="map-canvas" id="canvasFrame">
+                        <div class="philippines-map-wrapper">
+                            <img src="Metro_manila_map.png" alt="Metro Manila Regional Map" class="ph-map-img">
+                            
+                            <div class="network-node-dot node-pldt" id="pldtNode"></div>
+                            <div class="node-label label-pldt">
+                                PLDT Makati
+                                <span>Sprint Gateway</span>
+                            </div>
+                        </div>
+
+                        <div class="us-node-box" id="sprintNode">
+                            <div class="title">UNITED STATES</div>
+                            <div class="gateway">Sprint Network</div>
+                            <div class="subtext">San Francisco, USA</div>
+                            <div class="us-icon"></div>
+                        </div>
+
+                        <svg class="map-svg-overlay">
+                            <line id="mapLinkLine" class="connection-link" x1="0" y1="0" x2="0" y2="0"/>
+                        </svg>
+
+                        <div class="label-archipelago" id="mapFooterLabel">ISOLATED NETWORKS — PRE-1994</div>
+                    </div>
+                </section>
+
+                <section class="info-panel">
+                    <div class="status-card">
+                        <h2 class="status-card-title" id="panelTitle">NETWORK STATUS</h2>
+                        <div id="panelMetricsBody">
+                            <div class="status-row"><span class="status-label">Year</span><span class="status-value">1993</span></div>
+                            <div class="status-row"><span class="status-label">Status</span><span class="status-value isolated">ISOLATED</span></div>
+                            <div class="status-row"><span class="status-label">Networks</span><span class="status-value">BBS / UUCP only</span></div>
+                            <div class="status-row"><span class="status-label">International</span><span class="status-value">No TCP/IP</span></div>
+                            <p class="status-footer-text">
+                                E-mail required expensive international phone calls via UUCP — slow, unreliable, and inaccessible to most Filipinos.
+                            </p>
+                        </div>
+                    </div>
+                    <button class="action-btn" id="primaryActionBtn" disabled>Select Both Endpoints First</button>
+                </section>
+            </main>
+        </div>
+
+        <div class="app-screen" id="screenEstablished">
+            <main class="established-grid">
+                <section class="terminal-card">
+                    <div class="header-title">> NETWORK TERMINAL — PLDT MAKATI NODE</div>
+                    <div id="terminalLog"></div>
+                </section>
+
+                <section class="info-panel" id="historicMomentPanel" style="opacity: 0; transform: translateY(10px); transition: all 0.5s;">
+                    <div class="historic-banner">
+                        <div class="sun-icon">☀️</div>
+                        <h2 class="historic-title">PHILIPPINES ONLINE</h2>
+                        <div class="historic-date">March 29, 1994 • 01:15 AM</div>
+                        <p class="historic-text">
+                            The Philippines became the first Southeast Asian nation to establish a full TCP/IP connection to the global Internet. A 64 kbps leased line via Sprint linked PLDT's facility in Makati to the world — opening a new era for Filipino digital life.
+                        </p>
+                        
+                        <div class="metric-pills-row">
+                            <div class="metric-pill"><div class="val">64 kbps</div><div class="lbl">Speed</div></div>
+                            <div class="metric-pill"><div class="val">Cisco 7000</div><div class="lbl">Router</div></div>
+                            <div class="metric-pill"><div class="val">PLDT / Sprint</div><div class="lbl">Provider</div></div>
+                            <div class="metric-pill"><div class="val">TCP/IP</div><div class="lbl">Protocol</div></div>
+                        </div>
+                    </div>
+                    <button class="action-btn ready" id="simResetButton" onclick="window.location.reload();">Restart Simulation ↺</button>
+                </section>
+            </main>
+        </div>
+
+        <footer class="system-credits">
+            Educational simulation • Based on historical records • PLDT • DOST • NTC Philippines
+        </footer>
+    </div>
+
+    <script>
+        let currentStep = 'initial'; 
+        let selectedNodes = { pldt: false, sprint: false };
+
+        const globalStatus = document.getElementById('globalStatus');
+        const simTag = document.getElementById('simTag');
+        const screen1Title = document.getElementById('screen1Title');
+        const screen1Desc = document.getElementById('screen1Desc');
+        const instructionTxt = document.getElementById('instructionTxt');
+        const routePills = document.getElementById('routePills');
+        const pillPldt = document.getElementById('pillPldt');
+        const pillSprint = document.getElementById('pillSprint');
+        const primaryActionBtn = document.getElementById('primaryActionBtn');
+        const mapFooterLabel = document.getElementById('mapFooterLabel');
+        const mapLinkLine = document.getElementById('mapLinkLine');
+        
+        const pldtNode = document.getElementById('pldtNode');
+        const sprintNode = document.getElementById('sprintNode');
+
+        pldtNode.addEventListener('click', () => {
+            if (currentStep === 'initial') {
+                currentStep = 'selecting-route';
+                simTag.className = 'simulation-tag selecting';
+                simTag.innerText = 'SELECT CONNECTION ROUTE';
+                screen1Title.innerHTML = 'Select the Connection Route';
+                screen1Desc.innerText = 'Choose PLDT Makati and the Sprint endpoint to establish the historic link.';
+                instructionTxt.style.display = 'none';
+                routePills.style.display = 'flex';
+                mapFooterLabel.innerText = 'SELECT PLDT MAKATI • SPRINT USA';
+                mapFooterLabel.style.color = 'var(--connection-blue)';
+            }
+            
+            if (currentStep === 'selecting-route') {
+                selectedNodes.pldt = true;
+                pldtNode.classList.add('selected');
+                pillPldt.classList.add('selected');
+                pillPldt.innerText = '✓ PLDT Makati';
+                evaluateRouteCheck();
+            }
+        });
+
+        sprintNode.addEventListener('click', () => {
+            if (currentStep === 'selecting-route') {
+                selectedNodes.sprint = true;
+                sprintNode.classList.add('selected');
+                pillSprint.classList.add('selected');
+                pillSprint.innerText = '✓ Sprint USA';
+                evaluateRouteCheck();
+            }
+        });
+
+        function evaluateRouteCheck() {
+            if (selectedNodes.pldt || selectedNodes.sprint) {
+                const canvasBox = document.getElementById('canvasFrame').getBoundingClientRect();
+                const pldtBox = pldtNode.getBoundingClientRect();
+                const sprintBox = sprintNode.getBoundingClientRect();
+
+                mapLinkLine.setAttribute('x1', (pldtBox.left - canvasBox.left + 7));
+                mapLinkLine.setAttribute('y1', (pldtBox.top - canvasBox.top + 7));
+                mapLinkLine.setAttribute('x2', (sprintBox.left - canvasBox.left + 20));
+                mapLinkLine.setAttribute('y2', (sprintBox.top - canvasBox.top + 20));
+                mapLinkLine.style.opacity = '1';
+            }
+
+            if (selectedNodes.pldt && selectedNodes.sprint) {
+                currentStep = 'route-ready';
+                primaryActionBtn.removeAttribute('disabled');
+                primaryActionBtn.className = 'action-btn ready';
+                primaryActionBtn.innerText = 'CONNECT TO THE WORLD →';
+            }
+        }
+
+        primaryActionBtn.addEventListener('click', () => {
+            if (currentStep !== 'route-ready') return;
+            
+            currentStep = 'animating-connection';
+            document.getElementById('screenSelection').classList.remove('active');
+            document.getElementById('screenEstablished').classList.add('active');
+            executeTerminalScript();
+        });
+
+        function executeTerminalScript() {
+            const lines = [
+                { text: "> Initializing Cisco 7000 router...", delay: 200 },
+                { text: "> Configuring Sprint 64kbps leased line...", delay: 600 },
+                { text: "> Sending TCP/IP handshake packet...", delay: 1100 },
+                { text: "> Awaiting ACK from Sprint gateway...", delay: 1700 },
+                { text: "> ACK received from 204.59.0.1", delay: 2200 },
+                { text: "> BGP route established...", delay: 2600 },
+                { text: "> IP address assigned: <span class='terminal-accent'>202.57.0.1</span>", delay: 3000 },
+                { text: "> <span class='terminal-accent'>Connection ESTABLISHED ✓</span>", delay: 3400 },
+                { text: "> Philippines is now ONLINE.", delay: 3800 }
+            ];
+
+            const logBox = document.getElementById('terminalLog');
+            
+            lines.forEach((item) => {
+                setTimeout(() => {
+                    const el = document.createElement('div');
+                    el.className = 'terminal-line';
+                    el.innerHTML = item.text;
+                    logBox.appendChild(el);
+                    el.offsetHeight; 
+                    el.classList.add('print');
+                }, item.delay);
+            });
+
+            setTimeout(() => {
+                globalStatus.className = 'status-indicator status-online';
+                globalStatus.querySelector('.status-txt').innerText = 'ONLINE ✓';
+                
+                const card = document.getElementById('historicMomentPanel');
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+            }, 4200);
+        }
+    </script>
+</body>
+</html>
