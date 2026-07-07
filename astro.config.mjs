@@ -3,9 +3,27 @@ import mdx from '@astrojs/mdx';
 import react from '@astrojs/react';
 import icon from 'astro-icon';
 
+function fixAstroGlob() {
+  return {
+    name: 'fix-astro-glob-homepage',
+    enforce: 'pre',
+    transform(code, id) {
+      if (id.endsWith('HomepageLayout.astro') && code.includes('Astro.glob')) {
+        return code.replace(
+          /await Astro\.glob\((['"`].*?['"`])\)/,
+          'Object.values(import.meta.glob($1, { eager: true }))'
+        );
+      }
+    },
+  };
+}
+
 export default defineConfig({
   integrations: [mdx(), react(), icon()],
-  site: 'https://jrgo7.github.io',
-  base: 'virtual-exhibit-template',
+  site: 'https://your-username.github.io',
+  base: 'your-repo-name',
+  vite: {
+    plugins: [fixAstroGlob()],
+    assetsInclude: ['**/*.glb'],
+  },
 });
-
