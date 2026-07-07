@@ -20,7 +20,7 @@ const css = `
     background: linear-gradient(135deg, #07111e 0%, #03060c 100%);
     border: 1px solid rgba(255,255,255,0.05);
     border-radius: 8px;
-    padding: 30px;
+    padding: clamp(12px, 4vw, 30px);
     width: 100%;
     box-sizing: border-box;
   }
@@ -37,7 +37,7 @@ const css = `
     background: linear-gradient(to bottom, #3b82f6 50%, #ef4444 50%);
   }
   .sim-brand-title {
-    font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: 14px;
+    font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: clamp(10px, 2.5vw, 14px);
     letter-spacing: 1px; color: #f59e0b; text-transform: uppercase;
   }
   .sim-brand-sub { font-size: 11px; color: #94a3b8; margin-top: 2px; }
@@ -78,12 +78,12 @@ const css = `
 
   /* Workspace */
   .sim-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 25px; }
-  @media (max-width: 700px) { .sim-grid { grid-template-columns: 1fr; } }
+  @media (max-width: 900px) { .sim-grid { grid-template-columns: 1fr; } }
 
   .sim-map-card {
     background: var(--card-bg); border: 1px solid var(--border-color);
     border-radius: 12px; padding: 20px;
-    position: relative; min-height: 420px; display: flex; flex-direction: column;
+    position: relative; min-height: clamp(280px, 55vw, 420px); display: flex; flex-direction: column;
   }
   .sim-map-header {
     font-family: 'Share Tech Mono', monospace; font-size: 11px;
@@ -96,14 +96,14 @@ const css = `
     border: 1px solid rgba(255,255,255,0.03);
     background-image: linear-gradient(rgba(255,255,255,0.01) 1px, transparent 1px),
                       linear-gradient(90deg, rgba(255,255,255,0.01) 1px, transparent 1px);
-    background-size: 30px 30px; border-radius: 6px; overflow: hidden; min-height: 340px;
+    background-size: 30px 30px; border-radius: 6px; overflow: hidden; min-height: clamp(240px, 48vw, 340px);
   }
 
   /* Map wrapper */
   .sim-ph-wrapper {
     position: absolute; top: 10px; bottom: 10px;
     left: 40%; transform: translateX(-50%);
-    height: calc(100% - 20px); max-width: 260px;
+    height: calc(100% - 20px); max-width: clamp(160px, 40vw, 260px);
   }
   .sim-ph-img { height: 100%; width: 100%; object-fit: contain; opacity: 0.8; filter: drop-shadow(0 0 15px rgba(30,58,138,0.2)); display: block; }
 
@@ -127,6 +127,11 @@ const css = `
     background: rgba(8,17,30,0.9); border-radius: 8px;
     padding: 10px 12px; text-align: center;
     font-family: 'Share Tech Mono', monospace; cursor: pointer; transition: all 0.3s;
+  }
+  @media (max-width: 480px) {
+    .sim-us-box { right: 6px; top: 32%; padding: 6px 8px; }
+    .sim-us-box .us-title { font-size: 9px; }
+    .sim-us-box .us-gw { font-size: 10px; }
   }
   .sim-us-box.selected { border-color: #60a5fa; box-shadow: 0 0 15px rgba(96,165,250,0.3); }
   .sim-us-box .us-title { font-size: 10px; color: #94a3b8; }
@@ -167,13 +172,13 @@ const css = `
 
   /* Screen 2: Terminal */
   .sim-est-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 25px; }
-  @media (max-width: 700px) { .sim-est-grid { grid-template-columns: 1fr; } }
+  @media (max-width: 900px) { .sim-est-grid { grid-template-columns: 1fr; } }
 
   .sim-terminal {
     background: #02060c; border: 1px solid #1e293b;
     border-radius: 12px; padding: 20px;
     font-family: 'Share Tech Mono', monospace; font-size: 13px;
-    color: #34d399; min-height: 300px;
+    color: #34d399; min-height: clamp(200px, 40vw, 300px);
   }
   .sim-terminal-hdr { color: #94a3b8; margin-bottom: 12px; font-size: 11px; }
   .sim-term-line { margin-bottom: 6px; opacity: 0; transform: translateX(-50px); transition: opacity 0.3s, transform 0.3s; }
@@ -379,7 +384,7 @@ export default function InternetSimulation({ mapSrc = "/Metro_manila_map.png" })
 
                 <div
                   className="sim-map-footer"
-                  style={step !== "initial" ? { color: "#60a5fa" } : {}}
+                  style={step !== "initial" ? { color: "var(--connection-blue)" } : {}}
                 >
                   {step === "initial" ? "ISOLATED NETWORKS — PRE-1994" : "SELECT PLDT MAKATI • SPRINT USA"}
                 </div>
