@@ -18,37 +18,32 @@ import mapImage from '../assets/Metro_manila_map.png';
     color: #ffffff !important;
   }
   .header {
-    background: rgba(5, 11, 20, 0.95) !important;
-    border-bottom: 1px solid rgba(30, 58, 138, 0.4) !important;
-    color: #ffffff !important;
+    display: none !important;
   }
-  .header__titleblock {
-    background: transparent !important;
-    border: none !important;
-    box-shadow: none !important;
-    color: #ffffff !important;
+  .toc {
+    display: none !important;
   }
-  .header__titleblock strong,
-  .header__titleblock span {
-    color: #94a3b8 !important;
-  }
-  .button {
-    background: rgba(255,255,255,0.05) !important;
-    border-color: rgba(255,255,255,0.15) !important;
-    color: #ffffff !important;
-  }
-  .button:hover {
-    border-color: #60a5fa !important;
-    color: #60a5fa !important;
+  .padder {
+    display: none !important;
   }
   .content__titlemeta {
     display: none !important;
+  }
+  .content {
+    background: transparent !important;
+    padding: 0 !important;
+    max-width: 100% !important;
+  }
+  .content__block {
+    padding: 0 !important;
+    gap: 0 !important;
   }
   .article {
     background: transparent !important;
     border: none !important;
     box-shadow: none !important;
     padding: 0 !important;
+    border-radius: 0 !important;
     color: #e2e8f0 !important;
   }
   .article h1:first-of-type {
@@ -58,9 +53,11 @@ import mapImage from '../assets/Metro_manila_map.png';
     font-family: 'Lora Variable', serif !important;
     color: #f1f5f9 !important;
     border-bottom: 1px solid rgba(255,255,255,0.1) !important;
+    padding: 0 1.5rem !important;
   }
   .article p, .article li {
     color: #94a3b8 !important;
+    padding: 0 1.5rem !important;
   }
   .article strong {
     color: #e2e8f0 !important;
@@ -70,9 +67,15 @@ import mapImage from '../assets/Metro_manila_map.png';
   }
   .article hr {
     border-color: rgba(255,255,255,0.08) !important;
+    margin: 2rem 1.5rem !important;
+  }
+  .article ul {
+    padding-left: 3rem !important;
+    padding-right: 1.5rem !important;
   }
   .article table {
-    width: 100% !important;
+    width: calc(100% - 3rem) !important;
+    margin: 0 1.5rem !important;
     border-collapse: collapse !important;
   }
   .article th {
@@ -93,30 +96,6 @@ import mapImage from '../assets/Metro_manila_map.png';
   }
   .article tr:nth-child(even) td {
     background: rgba(255,255,255,0.02) !important;
-  }
-  .content {
-    background: transparent !important;
-    padding: 0 1.5rem !important;
-    max-width: 960px !important;
-  }
-  .content__block {
-    gap: 2rem !important;
-  }
-  .toc {
-    background: rgba(13, 27, 42, 0.7) !important;
-    border: 1px solid rgba(30, 58, 138, 0.3) !important;
-    box-shadow: none !important;
-    color: #94a3b8 !important;
-  }
-  .toc h2 {
-    color: #f59e0b !important;
-    font-family: 'Orbitron', sans-serif !important;
-    font-size: 12px !important;
-    letter-spacing: 1px !important;
-    border-color: rgba(255,255,255,0.1) !important;
-  }
-  .toc__item a {
-    color: #60a5fa !important;
   }
   footer {
     background: #020609 !important;
