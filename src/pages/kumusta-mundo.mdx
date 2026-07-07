@@ -8,6 +8,124 @@ readingTime: "8 minutes"
 import InternetSimulation from '../components/InternetSimulation.jsx';
 import mapImage from '../assets/Metro_manila_map.png';
 
+<style>
+{`
+  html {
+    background: #050b14 !important;
+  }
+  body {
+    background: transparent !important;
+    color: #ffffff !important;
+  }
+  .header {
+    background: rgba(5, 11, 20, 0.95) !important;
+    border-bottom: 1px solid rgba(30, 58, 138, 0.4) !important;
+    color: #ffffff !important;
+  }
+  .header__titleblock {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    color: #ffffff !important;
+  }
+  .header__titleblock strong,
+  .header__titleblock span {
+    color: #94a3b8 !important;
+  }
+  .button {
+    background: rgba(255,255,255,0.05) !important;
+    border-color: rgba(255,255,255,0.15) !important;
+    color: #ffffff !important;
+  }
+  .button:hover {
+    border-color: #60a5fa !important;
+    color: #60a5fa !important;
+  }
+  .content__titlemeta {
+    display: none !important;
+  }
+  .article {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    color: #e2e8f0 !important;
+  }
+  .article h1:first-of-type {
+    display: none !important;
+  }
+  .article h2, .article h3, .article h4 {
+    font-family: 'Lora Variable', serif !important;
+    color: #f1f5f9 !important;
+    border-bottom: 1px solid rgba(255,255,255,0.1) !important;
+  }
+  .article p, .article li {
+    color: #94a3b8 !important;
+  }
+  .article strong {
+    color: #e2e8f0 !important;
+  }
+  .article a {
+    color: #60a5fa !important;
+  }
+  .article hr {
+    border-color: rgba(255,255,255,0.08) !important;
+  }
+  .article table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+  }
+  .article th {
+    background: rgba(30, 58, 138, 0.3) !important;
+    color: #f59e0b !important;
+    padding: 10px 14px !important;
+    text-align: left !important;
+    font-family: 'Share Tech Mono', monospace !important;
+    font-size: 12px !important;
+    letter-spacing: 1px !important;
+    border: 1px solid rgba(255,255,255,0.08) !important;
+  }
+  .article td {
+    padding: 10px 14px !important;
+    border: 1px solid rgba(255,255,255,0.06) !important;
+    color: #94a3b8 !important;
+    font-size: 14px !important;
+  }
+  .article tr:nth-child(even) td {
+    background: rgba(255,255,255,0.02) !important;
+  }
+  .content {
+    background: transparent !important;
+    padding: 0 1.5rem !important;
+    max-width: 960px !important;
+  }
+  .content__block {
+    gap: 2rem !important;
+  }
+  .toc {
+    background: rgba(13, 27, 42, 0.7) !important;
+    border: 1px solid rgba(30, 58, 138, 0.3) !important;
+    box-shadow: none !important;
+    color: #94a3b8 !important;
+  }
+  .toc h2 {
+    color: #f59e0b !important;
+    font-family: 'Orbitron', sans-serif !important;
+    font-size: 12px !important;
+    letter-spacing: 1px !important;
+    border-color: rgba(255,255,255,0.1) !important;
+  }
+  .toc__item a {
+    color: #60a5fa !important;
+  }
+  footer {
+    background: #020609 !important;
+    border-top: 1px solid rgba(30, 58, 138, 0.3) !important;
+    color: #475569 !important;
+  }
+`}
+</style>
+
 # Kumusta Mundo
 
 ## Ang Kaarawan ng Lokal Networks sa Pilipinas
@@ -43,7 +161,7 @@ being a collection of isolated networks and became part of the world.
 Experience the historic connection yourself. Click the **PLDT Makati node** on the map, select
 the Sprint endpoint, and initiate the link that brought the Philippines online.
 
-<InternetSimulation mapSrc={mapImage.src} />
+<InternetSimulation client:load mapSrc={mapImage.src} />
 
 ---
 
