@@ -1,3 +1,31 @@
+# Mid-Milestone Development Log
+## What We Built
+- Converted the HTML prototype into a React component (`InternetSimulation.jsx`) embedded in an Astro/MDX page
+- Implemented a full dark theme that overrides the museum template styling
+- Made the simulation mobile-responsive with fluid `clamp()` sizing
+- Added `client:load` directive so the React interactivity actually runs in Astro
+
+## Aha Moments
+- Astro renders React as static HTML by default so without `client:load`, the simulation looks fine but nothing is clickable
+- The museum template's `.article` white box was fighting our dark theme; hiding the TOC/header and zeroing out the article padding fixed the layout clash
+- `clamp()` for sizing is cleaner than multiple media query breakpoints
+
+## Challenges
+- Getting the simulation to break out of the article container width without breaking the text content layout around it
+- The SVG connection line coordinates use `getBoundingClientRect` which depends on the actual rendered size of the canvas — required careful responsive sizing
+
+## References Used
+- Ayson Chronicles — primary account of the night Benjie Tan connected the Philippines to the Internet
+- The Urban Roamer — broader narrative of Philippine internet history (20 Years Online)
+- PhilStar — Broadbanding the Countryside (ISP expansion context)
+- Storage Providers Inc — Smart Communications Internet Cafe documentation
+
+## Next Steps (Final Submission)
+- Refine overall visual theme — a groupmate is drafting design proposals for a more cohesive look (possibly retro 1990s/CRT aesthetic to match the historic subject matter or a summery vibe)
+- Improve mobile layout further based on testing
+- Expand interactive element 
+---
+
 # CSARCH2 Virtual Exhibit Case Study Proposal
 ### 3rd Term AY 2025-2026
 ---
