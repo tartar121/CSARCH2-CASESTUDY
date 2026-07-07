@@ -20,8 +20,8 @@ function fixAstroGlob() {
 
 export default defineConfig({
   integrations: [mdx(), react(), icon()],
-  site: 'https://your-username.github.io',
-  base: 'your-repo-name',
+  site: 'https://tartar121.github.io',
+  base: 'CSARCH2-CASESTUDY',
   vite: {
     plugins: [fixAstroGlob()],
     assetsInclude: ['**/*.glb'],
