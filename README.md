@@ -4,15 +4,21 @@
 - Implemented a full dark theme that overrides the museum template styling
 - Made the simulation mobile-responsive with fluid `clamp()` sizing
 - Added `client:load` directive so the React interactivity actually runs in Astro
+- Added the Initial Implementation of the interactive model 
+- Converted Interactive element from HTML into React Component (`SmartCafeViewer.jsx`) 
 
 ## Aha Moments
 - Astro renders React as static HTML by default so without `client:load`, the simulation looks fine but nothing is clickable
 - The museum template's `.article` white box was fighting our dark theme; hiding the TOC/header and zeroing out the article padding fixed the layout clash
 - `clamp()` for sizing is cleaner than multiple media query breakpoints
+- The `.glb` file extension is not a recognized Vite/Astro feature, it was instead considered an asset type
+- Creating a 3D semi-decent model is tough   
 
 ## Challenges
 - Getting the simulation to break out of the article container width without breaking the text content layout around it
 - The SVG connection line coordinates use `getBoundingClientRect` which depends on the actual rendered size of the canvas — required careful responsive sizing
+- 3D model was very tedious to implement as the `.glb` file extension, as when shifting from HTML to Astro model-viewer logic had to used
+- The initial `astro.config` file did not sync properly to one of our groupmates terminal, requiring to indirectly manipulate file inputs using other config files (error came from `Astro.glob()` where it does not recognize it as a valid func)
 
 ## References Used
 - Ayson Chronicles — primary account of the night Benjie Tan connected the Philippines to the Internet
