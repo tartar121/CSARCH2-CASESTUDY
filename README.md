@@ -5,20 +5,21 @@
 - Made the simulation mobile-responsive with fluid `clamp()` sizing
 - Added `client:load` directive so the React interactivity actually runs in Astro
 - Added the Initial Implementation of the interactive model 
-- Converted Interactive element from HTML into React Component (`SmartCafeViewer.jsx`) 
+- Built `SmartCafeViewer.jsx` — a React component wrapping Google's `<model-viewer>` web component to display the `.glb` 3D model
 
 ## Aha Moments
 - Astro renders React as static HTML by default so without `client:load`, the simulation looks fine but nothing is clickable
 - The museum template's `.article` white box was fighting our dark theme; hiding the TOC/header and zeroing out the article padding fixed the layout clash
 - `clamp()` for sizing is cleaner than multiple media query breakpoints
-- The `.glb` file extension is not a recognized Vite/Astro feature, it was instead considered an asset type
-- Creating a 3D semi-decent model is tough   
+- `.glb` files are not recognized by Vite by default — had to explicitly declare them as an asset type in `astro.config.mjs` via `assetsInclude: ['**/*.glb']`
+- `<model-viewer>` (Google's web component) is more practical than raw Three.js for embedding a single inspectable 3D model
+- Building a 3D model from scratch is genuinely difficult and time-consuming 
 
 ## Challenges
 - Getting the simulation to break out of the article container width without breaking the text content layout around it
 - The SVG connection line coordinates use `getBoundingClientRect` which depends on the actual rendered size of the canvas — required careful responsive sizing
-- 3D model was very tedious to implement as the `.glb` file extension, as when shifting from HTML to Astro model-viewer logic had to used
-- The initial `astro.config` file did not sync properly to one of our groupmates terminal, requiring to indirectly manipulate file inputs using other config files (error came from `Astro.glob()` where it does not recognize it as a valid func)
+- Shifting the 3D model from a standalone HTML file to Astro required switching from a script-tag approach to `<model-viewer>` as a React-wrapped web component
+- The `astro.config.mjs` had an `Astro.glob()` call in `HomepageLayout.astro` that isn't valid in Astro 6 — fixed with a custom Vite plugin (`fixAstroGlob`) that rewrites it to `import.meta.glob()` at build time
 
 ## References Used
 - Ayson Chronicles — primary account of the night Benjie Tan connected the Philippines to the Internet
@@ -26,10 +27,11 @@
 - PhilStar — Broadbanding the Countryside (ISP expansion context)
 - Storage Providers Inc — Smart Communications Internet Cafe documentation
 
-## Next Steps (Final Submission)
+## Next Steps (for Final Submission)
 - Refine overall visual theme — a groupmate is drafting design proposals for a more cohesive look (possibly retro 1990s/CRT aesthetic to match the historic subject matter or a summery vibe)
 - Improve mobile layout further based on testing
-- Expand interactive element 
+- Expand and polish both interactive elements
+- Integrate the Smart Café viewer into the main exhibit page
 ---
 
 # CSARCH2 Virtual Exhibit Case Study Proposal
