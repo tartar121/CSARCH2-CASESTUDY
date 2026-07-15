@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pilipinas Online - The Birth of Philippine Internet</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&family=Inter:wght@300;400;600&display=swap');
+
+        :root {
+            --bg-color: #050b14;
+            --card-bg: rgba(13, 27, 42, 0.6);
+            --card-bg-2: rgba(15, 30, 50, 0.55);
+            --border-color: rgba(30, 58, 138, 0.3);
+            --text-primary: #ffffff;
+            --text-secondary: #94a3b8;
+            --accent-yellow: #f59e0b;
+            --accent-red: #ef4444;
+            --accent-green: #10b981;
+            --accent-blue: #3b82f6;
+            --connection-blue: #60a5fa;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            background-image: radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 0);
+            background-size: 40px 40px;
+            overflow-x: hidden;
+        }
+
+        .exhibit-container {
+            width: 100%;
+            max-width: 1150px;
+            background: linear-gradient(135deg, #07111e 0%, #03070c 100%);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            animation: containerFade 0.5s ease;
+        }
+        @keyframes containerFade { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Header */
+        .header-bar {
+            display: flex; justify-content: space-between; align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-bottom: 15px; margin-bottom: 25px;
+        }
+        .brand { position: relative; padding-left: 15px; }
+        .brand::before {
+            content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px;
+            background: linear-gradient(to bottom, var(--accent-blue) 50%, var(--accent-red) 50%);
+        }
+        .brand-title { font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: 14px; letter-spacing: 1px; color: var(--accent-yellow); text-transform: uppercase; }
+        .brand-subtitle { font-size: 11px; color: var(--text-secondary); margin-top: 2px; }
+        .status-indicator { display: flex; align-items: center; gap: 8px; font-family: 'Share Tech Mono', monospace; font-size: 11px; letter-spacing: 1px; }
+        .status-dot { width: 6px; height: 6px; border-radius: 50%; }
+        .status-online { color: var(--accent-green); }
+        .status-online .status-dot { background-color: var(--accent-green); box-shadow: 0 0 8px var(--accent-green); }
+
+        /* Content wrapper fills remaining space */
+        .workspace-grid { display: block; flex-grow: 1; width: 100%; box-sizing: border-box; }
+
+        /* Connected banner */
+        .connected-banner {
+            display: flex; justify-content: space-between; align-items: center;
+            background: rgba(16, 185, 129, 0.05); border: 1px solid rgba(16, 185, 129, 0.25);
+            border-radius: 10px; padding: 16px 20px; width: 100%; box-sizing: border-box;
+        }
+        .connected-left .connected-title {
+            font-family: 'Share Tech Mono', monospace; font-size: 12px; letter-spacing: 1px;
+            color: var(--accent-green); font-weight: 600; display: flex; align-items: center; gap: 8px;
+        }
+        .connected-left .connected-title .flag { font-size: 12px; color: var(--accent-green); }
+        .connected-left .connected-sub { font-size: 12px; color: var(--text-secondary); margin-top: 6px; }
+        .replay-btn {
+            background: transparent; border: 1px solid rgba(255,255,255,0.12); color: var(--text-secondary);
+            font-family: 'Share Tech Mono', monospace; font-size: 12px; padding: 9px 16px; border-radius: 8px;
+            cursor: pointer; display: flex; align-items: center; gap: 6px; white-space: nowrap;
+            transition: border-color 0.2s, color 0.2s, transform 0.15s ease, box-shadow 0.2s;
+        }
+        .replay-btn:hover { border-color: var(--connection-blue); color: var(--connection-blue); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(96, 165, 250, 0.15); }
+        .replay-btn:active { transform: translateY(0) scale(0.96); }
+        .replay-btn.spin-icon { display: inline-block; transition: transform 0.4s ease; }
+
+        /* Tabs */
+        .tab-row { display: flex; gap: 10px; margin: 20px 0; }
+        .tab-btn {
+            background: transparent; border: 1px solid rgba(255,255,255,0.1); color: var(--text-secondary);
+            font-family: 'Share Tech Mono', monospace; font-size: 11px; letter-spacing: 1px; padding: 9px 18px;
+            border-radius: 8px; cursor: pointer; text-transform: uppercase;
+            transition: border-color 0.2s, color 0.2s, background 0.2s, transform 0.15s ease;
+        }
+        .tab-btn.active { border-color: var(--accent-yellow); color: var(--accent-yellow); background: rgba(245, 158, 11, 0.06); }
+        .tab-btn:hover:not(.active) { border-color: rgba(255,255,255,0.25); color: var(--text-primary); transform: translateY(-1px); }
+        .tab-btn:active { transform: translateY(0) scale(0.96); }
+
+        /* Timeline card */
+        .timeline-card {
+            background-color: var(--card-bg-2); border: 1px solid var(--border-color); border-radius: 14px;
+            padding: 35px 30px 25px 30px; width: 100%; box-sizing: border-box;
+        }
+        .timeline-title {
+            font-family: 'Orbitron', sans-serif; font-size: 18px; letter-spacing: 1px; text-align: center;
+            color: var(--accent-yellow); margin-bottom: 25px; text-transform: uppercase;
+        }
+
+        .era-pills { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-bottom: 30px; }
+        .era-pill {
+            background: transparent; border: 1px solid rgba(255,255,255,0.1); color: var(--text-secondary);
+            font-family: 'Share Tech Mono', monospace; font-size: 11px; padding: 7px 14px; border-radius: 20px;
+            cursor: pointer; transition: border-color 0.2s, color 0.2s, background 0.2s, transform 0.15s ease;
+        }
+        .era-pill.active { border-color: var(--accent-yellow); color: var(--accent-yellow); background: rgba(245, 158, 11, 0.08); animation: pillPop 0.25s ease; }
+        .era-pill:hover:not(.active) { border-color: rgba(255,255,255,0.3); color: var(--text-primary); transform: translateY(-1px); }
+        .era-pill:active { transform: scale(0.94); }
+        @keyframes pillPop { 0% { transform: scale(0.9); } 60% { transform: scale(1.06); } 100% { transform: scale(1); } }
+
+        /* Timeline track */
+        .timeline-track { position: relative; display: flex; align-items: center; justify-content: space-between; margin: 0 10px 30px 10px; }
+        .timeline-track::before {
+            content: ''; position: absolute; left: 0; right: 0; top: 50%; height: 1px;
+            background: rgba(255,255,255,0.12); transform: translateY(-50%); z-index: 0;
+        }
+        .timeline-progress {
+            position: absolute; left: 0; top: 50%; height: 2px; width: 0%;
+            background: linear-gradient(to right, var(--accent-yellow), var(--connection-blue));
+            transform: translateY(-50%); z-index: 0; border-radius: 2px; transition: width 0.4s ease;
+        }
+        .timeline-dot-wrap { position: relative; display: flex; flex-direction: column; align-items: center; z-index: 1; }
+        .dot-tooltip {
+            position: absolute; bottom: 22px; font-family: 'Share Tech Mono', monospace; font-size: 10px;
+            color: var(--text-secondary); background: rgba(8, 17, 30, 0.95); border: 1px solid rgba(255,255,255,0.1);
+            padding: 3px 8px; border-radius: 6px; white-space: nowrap; opacity: 0; transform: translateY(4px);
+            transition: opacity 0.15s ease, transform 0.15s ease; pointer-events: none;
+        }
+        .timeline-dot-wrap:hover .dot-tooltip { opacity: 1; transform: translateY(0); }
+        .timeline-dot {
+            position: relative; z-index: 1; width: 12px; height: 12px; border-radius: 50%;
+            background: var(--bg-color); border: 2px solid rgba(255,255,255,0.25); cursor: pointer;
+            transition: width 0.2s ease, height 0.2s ease, background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, transform 0.15s ease;
+        }
+        .timeline-dot.passed { background: var(--accent-yellow); border-color: var(--accent-yellow); opacity: 0.5; }
+        .timeline-dot.active { width: 16px; height: 16px; background: var(--accent-yellow); border-color: var(--accent-yellow); box-shadow: 0 0 10px var(--accent-yellow); animation: dotPulse 0.4s ease; }
+        .timeline-dot:hover:not(.active) { border-color: var(--connection-blue); transform: scale(1.3); }
+        .timeline-dot:active { transform: scale(0.85); }
+        .dot-ping { position: absolute; inset: -6px; border-radius: 50%; border: 2px solid var(--accent-yellow); opacity: 0; pointer-events: none; }
+        .timeline-dot.active .dot-ping { animation: dotPing 1.6s ease-out infinite; }
+        @keyframes dotPulse { 0% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.6); } 100% { box-shadow: 0 0 10px var(--accent-yellow); } }
+        @keyframes dotPing { 0% { transform: scale(0.6); opacity: 0.7; } 100% { transform: scale(2.2); opacity: 0; } }
+
+        /* Era detail card */
+        .era-detail {
+            background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px;
+            padding: 22px 24px; width: 100%; box-sizing: border-box; display: flex; gap: 16px;
+            animation: detailFade 0.3s ease;
+        }
+        @keyframes detailFade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+        .era-icon {
+            flex-shrink: 0; width: 34px; height: 34px; border-radius: 50%; background: rgba(59, 130, 246, 0.12);
+            display: flex; align-items: center; justify-content: center; font-size: 16px; color: var(--connection-blue);
+        }
+        .era-body { flex-grow: 1; }
+        .era-heading { display: flex; align-items: baseline; gap: 10px; margin-bottom: 8px; }
+        .era-year { font-family: 'Share Tech Mono', monospace; font-size: 12px; color: var(--accent-yellow); font-weight: 600; }
+        .era-name { font-size: 15px; font-weight: 600; color: var(--text-primary); }
+        .era-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 16px; }
+        .era-stats { display: flex; gap: 30px; }
+        .era-stat .stat-val { font-family: 'Share Tech Mono', monospace; font-size: 14px; color: var(--accent-yellow); font-weight: bold; }
+        .era-stat .stat-lbl { font-size: 10px; color: var(--text-secondary); text-transform: uppercase; margin-top: 2px; letter-spacing: 0.5px; }
+
+        /* Pagination */
+        .timeline-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 22px; }
+        .page-btn {
+            background: transparent; border: 1px solid rgba(255,255,255,0.1); color: var(--text-secondary);
+            font-family: 'Share Tech Mono', monospace; font-size: 11px; padding: 8px 16px; border-radius: 8px;
+            cursor: pointer; transition: border-color 0.2s, color 0.2s, transform 0.15s ease;
+        }
+        .page-btn:hover:not(:disabled) { border-color: var(--connection-blue); color: var(--connection-blue); transform: translateX(0); }
+        .page-btn:hover:not(:disabled)#prevBtn { transform: translateX(-2px); }
+        .page-btn:hover:not(:disabled)#nextBtn { transform: translateX(2px); }
+        .page-btn:active:not(:disabled) { transform: scale(0.94); }
+        .page-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+        .page-indicator { font-family: 'Share Tech Mono', monospace; font-size: 12px; color: var(--text-secondary); }
+
+        .system-credits { text-align: center; font-family: 'Share Tech Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.15); margin-top: 25px; letter-spacing: 0.5px; }
+    </style>
+</head>
+<body>
+
+<div class="exhibit-container">
+    <header class="header-bar">
+        <div class="brand">
+            <div class="brand-title">pilipinas online</div>
+            <div class="brand-subtitle">The Birth of Philippine Internet — March 29, 1994</div>
+        </div>
+        <div class="status-indicator status-online">
+            <span class="status-dot"></span>
+            <span class="status-txt">ONLINE</span>
+        </div>
+    </header>
+
+    <main class="workspace-grid">
+
+        <div class="connected-banner">
+            <div class="connected-left">
+                <div class="connected-title"><span class="flag">PH</span> CONNECTED — MARCH 29, 1994 · 01:15 AM</div>
+                <div class="connected-sub">64 kbps leased line · PLDT Makati &rarr; Sprint San Francisco · Cisco 7000</div>
+            </div>
+            <button class="replay-btn" onclick="spinReplay(this)"><span id="replayIcon" style="display:inline-block;">&#8635;</span> Replay Simulation</button>
+        </div>
+
+        <div class="tab-row">
+            <button class="tab-btn active" id="tabTimeline" onclick="switchTab('timeline')">Timeline</button>
+            <button class="tab-btn" id="tabSpeed" onclick="switchTab('speed')">Speed Comparison</button>
+        </div>
+
+        <div class="timeline-card" id="panelTimeline">
+            <div class="timeline-title">The Philippine Internet Story</div>
+
+            <div class="era-pills" id="eraPills"></div>
+
+            <div class="timeline-track" id="timelineTrack"></div>
+
+            <div class="era-detail" id="eraDetailCard">
+                <div class="era-icon" id="eraIcon">&#127760;</div>
+                <div class="era-body">
+                    <div class="era-heading">
+                        <span class="era-year" id="eraYear"></span>
+                        <span class="era-name" id="eraName"></span>
+                    </div>
+                    <p class="era-desc" id="eraDesc"></p>
+                    <div class="era-stats" id="eraStats"></div>
+                </div>
+            </div>
+
+            <div class="timeline-footer">
+                <button class="page-btn" id="prevBtn" onclick="stepEra(-1)">&lsaquo; Previous</button>
+                <span class="page-indicator" id="pageIndicator"></span>
+                <button class="page-btn" id="nextBtn" onclick="stepEra(1)">Next &rsaquo;</button>
+            </div>
+        </div>
+
+        <div class="timeline-card" id="panelSpeed" style="display:none; text-align:center; color: var(--text-secondary); font-family:'Share Tech Mono', monospace; font-size: 13px; padding: 60px 30px;">
+            Speed comparison view coming soon.
+        </div>
+
+    </main>
+
+    <footer class="system-credits">
+        Educational simulation • Based on historical records • PLDT • DOST • NTC Philippines
+    </footer>
+</div>
+
+<script>
+    const eras = [
+        {
+            year: '1994', label: '1994', name: 'First ISPs Emerge', icon: '&#127760;',
+            desc: 'Following the historic connection, the first commercial Internet Service Providers launched in the Philippines, giving Filipino businesses and academics their first taste of the global web.',
+            stats: [{val:'3', lbl:'ISPs'}, {val:'~500', lbl:'Users'}]
+        },
+        {
+            year: '1996', label: '1994', name: 'First ISPs Emerge', icon: '&#127760;',
+            desc: 'Following the historic connection, the first commercial Internet Service Providers launched in the Philippines, giving Filipino businesses and academics their first taste of the global web.',
+            stats: [{val:'3', lbl:'ISPs'}, {val:'~500', lbl:'Users'}]
+        },
+        {
+            year: '1997-1999', label: '1997-1999', name: 'First ISPs Emerge', icon: '&#127760;',
+            desc: 'Following the historic connection, the first commercial Internet Service Providers launched in the Philippines, giving Filipino businesses and academics their first taste of the global web.',
+            stats: [{val:'3', lbl:'ISPs'}, {val:'~500', lbl:'Users'}]
+        },
+        {
+            year: '2000-2004', label: '2000-2004', name: 'First ISPs Emerge', icon: '&#127760;',
+            desc: 'Following the historic connection, the first commercial Internet Service Providers launched in the Philippines, giving Filipino businesses and academics their first taste of the global web.',
+            stats: [{val:'3', lbl:'ISPs'}, {val:'~500', lbl:'Users'}]
+        },
+        {
+            year: '2010', label: '2010', name: 'First ISPs Emerge', icon: '&#127760;',
+            desc: 'Following the historic connection, the first commercial Internet Service Providers launched in the Philippines, giving Filipino businesses and academics their first taste of the global web.',
+            stats: [{val:'3', lbl:'ISPs'}, {val:'~500', lbl:'Users'}]
+        },
+        {
+            year: '2020', label: '2020', name: 'First ISPs Emerge', icon: '&#127760;',
+            desc: 'Following the historic connection, the first commercial Internet Service Providers launched in the Philippines, giving Filipino businesses and academics their first taste of the global web.',
+            stats: [{val:'3', lbl:'ISPs'}, {val:'~500', lbl:'Users'}]
+        },
+    ];
+
+    let currentIndex = 0;
+
+    function renderPills() {
+        const pills = document.getElementById('eraPills');
+        pills.innerHTML = '';
+        eras.forEach((era, i) => {
+            const button = document.createElement('button');
+            button.className = 'era-pill' + (i === currentIndex ? ' active' : '');
+            button.textContent = era.label;
+            button.onclick = () => setEra(i);
+            pills.appendChild(button);
+        });
+    }
+
+    function renderTrack() {
+        const track = document.getElementById('timelineTrack');
+        track.innerHTML = '';
+        const progress = document.createElement('div');
+        progress.className = 'timeline-progress';
+        const pct = eras.length > 1 ? (currentIndex / (eras.length - 1)) * 100 : 0;
+        progress.style.width = pct + '%';
+        track.appendChild(progress);
+
+        eras.forEach((era, i) => {
+            const wrap = document.createElement('div');
+            wrap.className = 'timeline-dot-wrap';
+
+            const tooltip = document.createElement('span');
+            tooltip.className = 'dot-tooltip';
+            tooltip.textContent = era.label;
+            wrap.appendChild(tooltip);
+
+            const dot = document.createElement('div');
+            let dotClass = 'timeline-dot';
+            if (i === currentIndex) dotClass += ' active';
+            else if (i < currentIndex) dotClass += ' passed';
+            dot.className = dotClass;
+            dot.onclick = () => setEra(i);
+
+            if (i === currentIndex) {
+                const ping = document.createElement('span');
+                ping.className = 'dot-ping';
+                dot.appendChild(ping);
+            }
+
+            wrap.appendChild(dot);
+            track.appendChild(wrap);
+        });
+    }
+
+    function renderDetail() {
+        const era = eras[currentIndex];
+        const card = document.getElementById('eraDetailCard');
+        card.style.animation = 'none';
+        void card.offsetWidth;
+        card.style.animation = '';
+
+        document.getElementById('eraIcon').innerHTML = era.icon;
+        document.getElementById('eraYear').textContent = era.year;
+        document.getElementById('eraName').textContent = era.name;
+        document.getElementById('eraDesc').textContent = era.desc;
+
+        const stats = document.getElementById('eraStats');
+        stats.innerHTML = '';
+        era.stats.forEach(s => {
+            const div = document.createElement('div');
+            div.className = 'era-stat';
+            div.innerHTML = '<div class="stat-val">' + s.val + '</div><div class="stat-lbl">' + s.lbl + '</div>';
+            stats.appendChild(div);
+        });
+
+        document.getElementById('pageIndicator').textContent = (currentIndex + 1) + ' / ' + eras.length;
+        document.getElementById('prevBtn').disabled = currentIndex === 0;
+        document.getElementById('nextBtn').disabled = currentIndex === eras.length - 1;
+    }
+
+    function setEra(i) {
+        currentIndex = i;
+        renderPills();
+        renderTrack();
+        renderDetail();
+    }
+
+    function stepEra(delta) {
+        const next = currentIndex + delta;
+        if (next >= 0 && next < eras.length) setEra(next);
+    }
+
+    function switchTab(tab) {
+        document.getElementById('tabTimeline').classList.toggle('active', tab === 'timeline');
+        document.getElementById('tabSpeed').classList.toggle('active', tab === 'speed');
+        document.getElementById('panelTimeline').style.display = tab === 'timeline' ? 'block' : 'none';
+        document.getElementById('panelSpeed').style.display = tab === 'speed' ? 'block' : 'none';
+    }
+
+    function spinReplay(btn) {
+        const icon = document.getElementById('replayIcon');
+        icon.style.transition = 'transform 0.4s ease';
+        icon.style.transform = 'rotate(360deg)';
+        btn.disabled = true;
+        setTimeout(() => { window.location.reload(); }, 350);
+    }
+
+    setEra(0);
+</script>
+</body>
+</html>
