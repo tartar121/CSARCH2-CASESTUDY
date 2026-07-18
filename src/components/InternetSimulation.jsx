@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 
 // Styles
-const css = `
+export const css = `
   @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&family=Inter:wght@300;400;600&display=swap');
 
   .sim-root {
