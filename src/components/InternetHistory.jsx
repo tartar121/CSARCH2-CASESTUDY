@@ -1,7 +1,8 @@
 import {useState} from "react";
 import { css } from './InternetSimulation.jsx';
 
-export default function InternetHistory(){
+
+export default function InternetHistory({onReplay}){
     const [activeEra, setActiveEra] = useState(0);
     const eras = [
         {
@@ -147,7 +148,7 @@ export default function InternetHistory(){
                             64 kbps leased line - PLDT Makati → Sprint San Francisco - Cisco 7000
                         </div>
                     </div>
-                    <button className="sim-replay-btn">↻ Replay Simulation</button>
+                    <button className="sim-replay-btn" onClick={onReplay}>↻ Replay Simulation</button>
                 </div>
 
                 <div className="sim-tabs">

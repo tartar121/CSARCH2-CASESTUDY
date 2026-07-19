@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import InternetHistory from "./InternetHistory.jsx";
 
 // Styles
 export const css = `
@@ -169,7 +170,14 @@ export const css = `
     cursor: pointer; box-shadow: 0 4px 14px rgba(96,165,250,0.3);
   }
   .sim-btn.ready:hover { opacity: 0.9; }
-
+  
+  .sim-btn.green {
+    background: linear-gradient(to right, #065f46, #10b981);
+    border-color: #34d399; color: #fff;
+    cursor: pointer; box-shadow: 0 4px 14px rgba(96,165,250,0.3);
+  }
+  .sim-btn.green:hover { opacity: 0.9; }
+  
   /* Screen 2: Terminal */
   .sim-est-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 25px; }
   @media (max-width: 900px) { .sim-est-grid { grid-template-columns: 1fr; } }
@@ -290,6 +298,14 @@ export default function InternetSimulation({ mapSrc = "/Metro_manila_map.png" })
     setTermLines([]);
     setBannerVis(false);
     setLinkCoords(null);
+  }
+
+  if (step === "impact") {
+    return (
+        <div style={{ position: "relative" }} className="sim-screen">
+          <InternetHistory onReplay={handleReset} />
+        </div>
+    );
   }
 
   const tagClass      = step === "selecting" || step === "ready" ? "sim-tag selecting" : "sim-tag";
@@ -456,6 +472,7 @@ export default function InternetSimulation({ mapSrc = "/Metro_manila_map.png" })
                   <div className="sim-metric"><div className="sim-metric-val">TCP/IP</div><div className="sim-metric-lbl">Protocol</div></div>
                 </div>
               </div>
+              <button className="sim-btn green" onClick={() => setStep("impact")} disabled={!bannerVis}>Explore the impact ↺</button>
               <button className="sim-btn ready" onClick={handleReset}>Restart Simulation ↺</button>
             </section>
           </main>
