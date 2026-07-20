@@ -1,18 +1,20 @@
-import bgmUrl from './exhibit_background_music.mp3';
+// Reference the audio file location relative to the public/static build
+const bgmUrl = new URL('./exhibit_background_music.mp3', import.meta.url).href;
 
 class ExhibitAudio {
   constructor() {
     this.audio = null;
-    this.isInitialized = false;
     this.isMuted = false;
     this.buttonEl = null;
+    this.isInitialized = false;
   }
 
   init(volume = 0.5) {
     if (typeof window === 'undefined' || this.isInitialized) return;
+
     this.audio = new Audio(bgmUrl);
     this.audio.loop = true;
-    this.audio.volume = Math.max(0, Math.min(1, volume));
+    this.audio.volume = volume;
     this.isInitialized = true;
   }
 
@@ -21,12 +23,13 @@ class ExhibitAudio {
     try {
       await this.audio.play();
     } catch (err) {
-      console.warn('Autoplay blocked. User interaction required.', err);
+      console.warn('Autoplay blocked. Click anywhere on page to play.', err);
     }
   }
 
   toggleMute() {
     if (!this.audio) this.init();
+
     this.isMuted = !this.isMuted;
     this.audio.muted = this.isMuted;
     this.updateButtonUI();
@@ -34,21 +37,21 @@ class ExhibitAudio {
     if (!this.isMuted && this.audio.paused) {
       this.play();
     }
-    return this.isMuted;
   }
 
   createMuteButton() {
     if (typeof window === 'undefined' || this.buttonEl) return;
 
+    // Create the small floating button
     const btn = document.createElement('button');
     btn.id = 'audio-mute-btn';
     btn.setAttribute('aria-label', 'Toggle Mute');
-    
+
     Object.assign(btn.style, {
       position: 'fixed',
       bottom: '1rem',
       right: '1rem',
-      zIndex: '9999',
+      zIndex: '99999',
       width: '38px',
       height: '38px',
       borderRadius: '50%',
@@ -60,11 +63,15 @@ class ExhibitAudio {
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      backdropFilter: 'blur(4px)',
-      boxShadow: '0 2px 8px rgba(0,0,0,0.3)'
+      boxShadow: '0 2px 8px rgba(0,0,0,0.3)',
+      backdropFilter: 'blur(4px)'
     });
 
-    btn.onclick = () => this.toggleMute();
+    btn.onclick = (e) => {
+      e.stopPropagation();
+      this.toggleMute();
+    };
+
     document.body.appendChild(btn);
     this.buttonEl = btn;
     this.updateButtonUI();
@@ -75,19 +82,30 @@ class ExhibitAudio {
     this.buttonEl.innerHTML = this.isMuted ? '🔇' : '🔊';
   }
 
-  enableAutoplayOnInteraction() {
+  autoStart() {
     if (typeof window === 'undefined') return;
-    this.createMuteButton();
 
-    const startOnInteraction = () => {
+    // Build button when DOM is ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', () => this.createMuteButton());
+    } else {
+      this.createMuteButton();
+    }
+
+    // Play on first user interaction anywhere on the page
+    const startAudio = () => {
       if (!this.isMuted) this.play();
-      window.removeEventListener('click', startOnInteraction);
-      window.removeEventListener('keydown', startOnInteraction);
+      window.removeEventListener('click', startAudio);
+      window.removeEventListener('keydown', startAudio);
     };
 
-    window.addEventListener('click', startOnInteraction, { once: true });
-    window.addEventListener('keydown', startOnInteraction, { once: true });
+    window.addEventListener('click', startAudio, { once: true });
+    window.addEventListener('keydown', startAudio, { once: true });
   }
 }
 
-export const exhibitAudio = new ExhibitAudio();
+// Automatically boot the audio engine
+const exhibitAudio = new ExhibitAudio();
+exhibitAudio.autoStart();
+
+export default exhibitAudio;
