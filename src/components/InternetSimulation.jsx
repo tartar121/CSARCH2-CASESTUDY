@@ -207,10 +207,10 @@ export default function InternetSimulation({ mapSrc = "/Metro_manila_map.png" })
             <section className="sim-info-panel">
               <div className="sim-status-card">
                 <h2 className="sim-status-card-title">NETWORK STATUS</h2>
-                <div className="sim-status-row"><span className="sim-status-lbl">Year</span><span>1993</span></div>
+                <div className="sim-status-row"><span className="sim-status-lbl">Year</span><span className="sim-status-val">1993</span></div>
                 <div className="sim-status-row"><span className="sim-status-lbl">Status</span><span className="sim-status-val-red">ISOLATED</span></div>
-                <div className="sim-status-row"><span className="sim-status-lbl">Networks</span><span>BBS / UUCP only</span></div>
-                <div className="sim-status-row"><span className="sim-status-lbl">International</span><span>No TCP/IP</span></div>
+                <div className="sim-status-row"><span className="sim-status-lbl">Networks</span><span className="sim-status-val">BBS / UUCP only</span></div>
+                <div className="sim-status-row"><span className="sim-status-lbl">International</span><span className="sim-status-val">No TCP/IP</span></div>
                 <p className="sim-footer-txt">
                   E-mail required expensive international phone calls via UUCP — slow, unreliable, and inaccessible to most Filipinos.
                 </p>
@@ -232,15 +232,19 @@ export default function InternetSimulation({ mapSrc = "/Metro_manila_map.png" })
         <div className="sim-screen">
           <main className="sim-est-grid">
             {/* Terminal */}
-            <section className="sim-terminal">
-              <div className="sim-terminal-hdr">&gt; NETWORK TERMINAL — PLDT MAKATI NODE</div>
-              {termLines.map((html, i) => (
-                <div
-                  key={i}
-                  className="sim-term-line print"
-                  dangerouslySetInnerHTML={{ __html: html }}
-                />
-              ))}
+            <section className="sim-terminal-card">
+              <div className="sim-terminal-hdr-bar">
+                <span className="sim-terminal-prompt">&gt;_</span> NETWORK TERMINAL — PLDT MAKATI NODE
+              </div>
+              <div className="sim-terminal-body">
+                {termLines.map((html, i) => (
+                  <div
+                    key={i}
+                    className="sim-term-line print"
+                    dangerouslySetInnerHTML={{ __html: html }}
+                  />
+                ))}
+              </div>
             </section>
 
             {/* Historic moment */}
@@ -288,7 +292,7 @@ export default function InternetSimulation({ mapSrc = "/Metro_manila_map.png" })
             <button className="sim-btn green" onClick={() => setStep("impact")} disabled={!bannerVis}>
               Explore the impact ↺
             </button>
-            <button className="sim-btn ready" onClick={handleReset}>
+            <button className="sim-btn ready sim-restart-btn" onClick={handleReset}>
               Restart Simulation ↺
             </button>
           </div>

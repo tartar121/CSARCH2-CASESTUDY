@@ -594,6 +594,30 @@
   margin-top: 4px;
   letter-spacing: 1px;
 }
+.sim-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.sim-connected-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 14px;
+}
+.sim-connected-actions .sim-btn {
+  width: auto;
+  flex: 1 1 200px;
+}
+.sim-btn.green {
+  background: var(--accent-green);
+  border-color: #2f6b48;
+  color: var(--paper);
+  cursor: pointer;
+  text-shadow: 0 0 8px rgba(245, 231, 189, 0.3);
+}
+.sim-btn.green:hover {
+  background: #3f8a5c;
+}
 .sim-restart-btn {
   background: var(--red) !important;
   border: 2px solid #8B2922 !important;
