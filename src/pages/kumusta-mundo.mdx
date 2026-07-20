@@ -11,12 +11,34 @@ import mapImage from '../assets/Metro_manila_map.png';
 <style>
 {`
   html {
-    background: #59322B !important;
+    background: #1c1210 !important;
   }
   body {
-    background: #59322B !important;
+    background: #1c1210 !important;
     color: #e8dbb5 !important;
     padding: 24px 0 !important;
+    position: relative !important;
+  }
+  /* CRT scanline + vignette overlay across the whole page */
+  body::before {
+    content: "" !important;
+    position: fixed !important;
+    inset: 0 !important;
+    pointer-events: none !important;
+    z-index: 9999 !important;
+    background:
+      repeating-linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.18) 0px,
+        rgba(0, 0, 0, 0.18) 1px,
+        transparent 1px,
+        transparent 3px
+      ),
+      radial-gradient(
+        ellipse at center,
+        rgba(0, 0, 0, 0) 55%,
+        rgba(0, 0, 0, 0.55) 100%
+      );
   }
   .header {
     display: none !important;
@@ -38,12 +60,30 @@ import mapImage from '../assets/Metro_manila_map.png';
   .content__block {
     padding: 0 !important;
     gap: 0 !important;
+    max-width: 780px !important;
+    margin: 0 auto !important;
+    border: 2px solid #4A2518 !important;
+    border-radius: 6px !important;
+    background: rgba(89, 50, 43, 0.35) !important;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.5), inset 0 0 60px rgba(0, 0, 0, 0.25) !important;
+  }
+  .content__block::before {
+    content: "▓▓ ARCHIVE TERMINAL — LOG_0001 // KUMUSTA_MUNDO.TXT ▓▓" !important;
+    display: block !important;
+    background: #3a2a22 !important;
+    color: #e8dbb5 !important;
+    font-family: 'IBM Plex Mono', monospace !important;
+    font-size: 10px !important;
+    letter-spacing: 2px !important;
+    padding: 8px 16px !important;
+    border-bottom: 2px solid #4A2518 !important;
+    border-radius: 4px 4px 0 0 !important;
   }
   .article {
     background: transparent !important;
     border: none !important;
     box-shadow: none !important;
-    padding: 0 !important;
+    padding: 1.5rem 0 2rem !important;
     border-radius: 0 !important;
     color: #e8dbb5 !important;
   }
@@ -52,14 +92,25 @@ import mapImage from '../assets/Metro_manila_map.png';
   }
   .article h2, .article h3, .article h4 {
     font-family: 'Bebas Neue', 'IBM Plex Mono', monospace !important;
-    color: #D28C4B !important;
-    border-bottom: 2px solid rgba(210, 140, 75, 0.3) !important;
+    color: #f0a860 !important;
+    text-shadow: 0 0 6px rgba(240, 168, 96, 0.55), 0 0 16px rgba(240, 168, 96, 0.25) !important;
+    border-bottom: 2px solid rgba(240, 168, 96, 0.3) !important;
     padding: 0 0.5rem !important;
     letter-spacing: 1.5px !important;
     text-transform: uppercase !important;
   }
+  .article h2::after, .article h3::after {
+    content: "_" !important;
+    animation: sim-crt-blink 1s steps(1) infinite !important;
+    margin-left: 2px !important;
+  }
+  @keyframes sim-crt-blink {
+    0%, 49% { opacity: 1; }
+    50%, 100% { opacity: 0; }
+  }
   .article p, .article li {
     color: #e8dbb5 !important;
+    text-shadow: 0 0 2px rgba(232, 219, 181, 0.15) !important;
     padding: 0 0.5rem !important;
     font-family: 'IBM Plex Mono', monospace !important;
     font-size: 13px !important;
@@ -67,18 +118,25 @@ import mapImage from '../assets/Metro_manila_map.png';
   }
   .article strong {
     color: #f5e7bd !important;
+    text-shadow: 0 0 6px rgba(245, 231, 189, 0.4) !important;
   }
   .article a {
-    color: #D28C4B !important;
+    color: #f0a860 !important;
   }
   .article hr {
     border: none !important;
-    border-top: 2px solid rgba(115, 7, 7, 0.2) !important;
+    border-top: 2px dashed rgba(240, 168, 96, 0.3) !important;
     margin: 2rem 0.5rem !important;
   }
   .article ul {
-    padding-left: 2.5rem !important;
+    padding-left: 1rem !important;
     padding-right: 0.5rem !important;
+    list-style: none !important;
+  }
+  .article ul li::before {
+    content: "> " !important;
+    color: #f0a860 !important;
+    font-weight: bold !important;
   }
   .article table {
     width: calc(100% - 1rem) !important;
