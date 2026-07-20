@@ -133,11 +133,11 @@ export default function InternetSimulation({ mapSrc = "/Metro_manila_map.png" })
             <h1 className="sim-title">
               {step === "initial" ? <>The Philippines, <span>Offline</span></> : "Select the Connection Route"}
             </h1>
-            <p className="sim-desc">
+            <div className="sim-desc">
               {step === "initial"
                 ? "Before March 29, 1994, the Philippines had no direct connection to the global Internet. Universities and businesses operated isolated Bulletin Board Systems and UUCP networks — islands of data in a pre-connected archipelago."
                 : "Choose PLDT Makati and the Sprint endpoint to establish the historic link."}
-            </p>
+            </div>
             {step === "initial" && (
               <div className="sim-instruction">↓ Click the PLDT Makati node on the map to begin the simulation</div>
             )}
@@ -260,11 +260,11 @@ export default function InternetSimulation({ mapSrc = "/Metro_manila_map.png" })
                 <div className="sim-sun">☀️</div>
                 <h2 className="sim-banner-title">PHILIPPINES ONLINE</h2>
                 <div className="sim-banner-date">March 29, 1994 • 01:15 AM</div>
-                <p className="sim-banner-txt">
+                <div className="sim-banner-txt">
                   The Philippines became the first Southeast Asian nation to establish a full TCP/IP connection
                   to the global Internet. A 64 kbps leased line via Sprint linked PLDT's facility in Makati to
                   the world — opening a new era for Filipino digital life.
-                </p>
+                </div>
               </div>
             </section>
           </main>
