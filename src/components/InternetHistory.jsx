@@ -2,7 +2,7 @@ import {useState} from "react";
 import { css } from './InternetSimulation.jsx';
 
 
-export default function InternetHistory({onReplay}){
+export default function InternetHistory({onReplay = () => {} }){
     const [activeEra, setActiveEra] = useState(0);
     const eras = [
         {
@@ -23,8 +23,8 @@ export default function InternetHistory({onReplay}){
             icon: "🌐",
             desc: "Following the initial connection, the passage of the Public Telecommunications Policy Act allowed companies and institutions to connect without requiring a full legislative franchise. This regulatory shift birthed the country's first commercial Internet Service Providers (ISPs), expanding access beyond scientists and universities to businesses and the general public.",
             stats: [
-                { val: "3", lbl: "ISPs" },
-                { val: "~500", lbl: "Users" },
+                { val: "20+", lbl: "ISPs" },
+                { val: "~50000", lbl: "Users" },
             ],
         },
         {
@@ -34,8 +34,8 @@ export default function InternetHistory({onReplay}){
             icon: "🌐",
             desc: "During this period, the Philippines built out domestic infrastructure like local exchanges to keep internal internet traffic within the country rather than routing it through overseas servers. Early digital culture began to take root as adoption grew around platforms like mIRC, Yahoo Mail, and early personal websites.",
             stats: [
-                { val: "3", lbl: "ISPs" },
-                { val: "~500", lbl: "Users" },
+                { val: "40", lbl: "ISPs" },
+                { val: "~1 million", lbl: "Users" },
             ],
         },
         {
@@ -45,8 +45,8 @@ export default function InternetHistory({onReplay}){
             icon: "🌐",
             desc: "The early 2000s marked a major shift when PLDT introduced DSL broadband in 2000, replacing slow 56k dial-up connections and freeing up landlines during web use. This era sparked an explosion of local cyber cafés, which became social hubs where millions of Filipinos got their first taste of the internet through web browsing and online multiplayer games like Ragnarok Online and Counter-Strike.   ",
             stats: [
-                { val: "3", lbl: "ISPs" },
-                { val: "~500", lbl: "Users" },
+                { val: "70+", lbl: "ISPs" },
+                { val: "~7 million", lbl: "Users" },
             ],
         },
         {
@@ -56,8 +56,7 @@ export default function InternetHistory({onReplay}){
             icon: "🌐",
             desc: "Telecom operators expanded TD-LTE broadband and mobile networks during this decade, accelerating a nationwide transition toward mobile data. Powered by cheap mobile access and exploding smartphone adoption, mobile subscriptions rapidly climbed past 100 million, turning the country into one of the most hyper-connected social media populations in the world.",
             stats: [
-                { val: "3", lbl: "ISPs" },
-                { val: "~500", lbl: "Users" },
+                { val: "~30 million", lbl: "Internet Users" },
             ],
         },
         {
@@ -67,8 +66,7 @@ export default function InternetHistory({onReplay}){
             icon: "🌐",
             desc: "Increased government pressure on telecommunications providers in 2020 triggered massive network upgrades, driving average internet speeds from single digits up to over 80 Mbps. Modern developments followed rapidly, including the entry of a third major telco, the introduction of Starlink satellite internet, and large-scale national fiber backbone projects to connect remote islands and provinces.",
             stats: [
-                { val: "3", lbl: "ISPs" },
-                { val: "~500", lbl: "Users" },
+                { val: "~73 million", lbl: "Internet Users" },
             ],
         },
     ];
@@ -288,7 +286,7 @@ export default function InternetHistory({onReplay}){
                                 <span className="sim-era-year">{eras[activeEra].year}</span>
                                 <span className="sim-era-name">{eras[activeEra].name}</span>
                             </div>
-                            <p className="sim-era-desc">{eras[activeEra].desc}</p>
+                            <div className="sim-era-desc">{eras[activeEra].desc}</div>
                             <div className="sim-era-stats">
                                 {eras[activeEra].stats.map((s, i) => (
                                     <div key={i} className="sim-era-stat">
