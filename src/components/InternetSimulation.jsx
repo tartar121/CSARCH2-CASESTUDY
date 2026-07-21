@@ -158,7 +158,7 @@ export default function InternetSimulation({ mapSrc = "/Metro_manila_map.png" })
               </div>
               <div className="sim-canvas" ref={canvasRef}>
                 <div className="sim-ph-wrapper">
-                  <img src={mapSrc} alt="Metro Manila Regional Map" className="sim-ph-img" />
+                  <img src={mapSrc} alt="Metro Manila Regional Map" className="sim-ph-img" loading="lazy" />
                   <div
                     className={`sim-node-pldt${pldtSel ? " selected" : ""}`}
                     ref={pldtRef}
