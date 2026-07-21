@@ -1,10 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
 import bgmUrl from '../assets/exhibit_background_music.mp3';
 
+const STORAGE_KEY = 'kumusta-audio-started';
+
 export default function ExhibitAudio({ volume = 0.4 }) {
   const audioRef = useRef(null);
   const [muted, setMuted] = useState(false);
-  const [started, setStarted] = useState(false);
 
   useEffect(() => {
     const audio = new Audio(bgmUrl);
@@ -12,22 +13,31 @@ export default function ExhibitAudio({ volume = 0.4 }) {
     audio.volume = volume;
     audioRef.current = audio;
 
-    const start = () => {
-      if (!muted) {
-        audio.play().catch(() => {});
-      }
-      setStarted(true);
-      window.removeEventListener('click', start);
-      window.removeEventListener('keydown', start);
-    };
+    const alreadyStarted = sessionStorage.getItem(STORAGE_KEY) === 'true';
 
-    window.addEventListener('click', start, { once: true });
-    window.addEventListener('keydown', start, { once: true });
+    if (alreadyStarted) {
+      // User already clicked before (resume immediately)
+      audio.play().catch(() => {});
+    } else {
+      // First visit (wait for click/keydown)
+      const start = () => {
+        if (!muted) {
+          audio.play().catch(() => {});
+          sessionStorage.setItem(STORAGE_KEY, 'true');
+        }
+      };
+      window.addEventListener('click', start, { once: true });
+      window.addEventListener('keydown', start, { once: true });
+
+      return () => {
+        audio.pause();
+        window.removeEventListener('click', start);
+        window.removeEventListener('keydown', start);
+      };
+    }
 
     return () => {
       audio.pause();
-      window.removeEventListener('click', start);
-      window.removeEventListener('keydown', start);
     };
   }, []);
 
@@ -37,9 +47,9 @@ export default function ExhibitAudio({ volume = 0.4 }) {
     const next = !muted;
     setMuted(next);
     audio.muted = next;
-    if (!next && !started) {
+    if (!next) {
       audio.play().catch(() => {});
-      setStarted(true);
+      sessionStorage.setItem(STORAGE_KEY, 'true');
     }
   }
 
