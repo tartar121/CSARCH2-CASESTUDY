@@ -8,7 +8,7 @@ export default function InternetHistory({onReplay = () => {} }){
         {
             year: "1994",
             label: "1994",
-            name: "First ISPs Emerge",
+            name: "The First Live Link",
             icon: "🌐",
             desc: "On March 29, 1994, at 1:15 AM, engineer Benjie Tan established the Philippines' first live connection to the global internet via a 64 kbps international leased line using a Cisco 7000 router connected to SprintLink in California. Later that morning at 10:18 AM, the historic milestone was officially announced to the public during the First International Email Conference at the University of San Carlos in Cebu.",
             stats: [
@@ -19,7 +19,7 @@ export default function InternetHistory({onReplay = () => {} }){
         {
             year: "1996",
             label: "1996",
-            name: "First ISPs Emerge",
+            name: "Commercial ISP Boom",
             icon: "🌐",
             desc: "Following the initial connection, the passage of the Public Telecommunications Policy Act allowed companies and institutions to connect without requiring a full legislative franchise. This regulatory shift birthed the country's first commercial Internet Service Providers (ISPs), expanding access beyond scientists and universities to businesses and the general public.",
             stats: [
@@ -30,7 +30,7 @@ export default function InternetHistory({onReplay = () => {} }){
         {
             year: "1997-1999",
             label: "1997-1999",
-            name: "First ISPs Emerge",
+            name: "Local Traffic & Early Web Culture",
             icon: "🌐",
             desc: "During this period, the Philippines built out domestic infrastructure like local exchanges to keep internal internet traffic within the country rather than routing it through overseas servers. Early digital culture began to take root as adoption grew around platforms like mIRC, Yahoo Mail, and early personal websites.",
             stats: [
@@ -41,9 +41,9 @@ export default function InternetHistory({onReplay = () => {} }){
         {
             year: "2000-2004",
             label: "2000-2004",
-            name: "First ISPs Emerge",
+            name: "DSL & Cyber Café Era",
             icon: "🌐",
-            desc: "The early 2000s marked a major shift when PLDT introduced DSL broadband in 2000, replacing slow 56k dial-up connections and freeing up landlines during web use. This era sparked an explosion of local cyber cafés, which became social hubs where millions of Filipinos got their first taste of the internet through web browsing and online multiplayer games like Ragnarok Online and Counter-Strike.   ",
+            desc: "The early 2000s marked a major shift when PLDT introduced DSL broadband in 2000, replacing slow 56k dial-up connections and freeing up landlines during web use. This era sparked an explosion of local cyber cafés, which became social hubs where millions of Filipinos got their first taste of the internet through web browsing and online multiplayer games like Ragnarok Online and Counter-Strike.",
             stats: [
                 { val: "70+", lbl: "ISPs" },
                 { val: "~7 million", lbl: "Users" },
@@ -52,7 +52,7 @@ export default function InternetHistory({onReplay = () => {} }){
         {
             year: "2010",
             label: "2010",
-            name: "First ISPs Emerge",
+            name: "Mobile Data & Social Media",
             icon: "🌐",
             desc: "Telecom operators expanded TD-LTE broadband and mobile networks during this decade, accelerating a nationwide transition toward mobile data. Powered by cheap mobile access and exploding smartphone adoption, mobile subscriptions rapidly climbed past 100 million, turning the country into one of the most hyper-connected social media populations in the world.",
             stats: [
@@ -62,7 +62,7 @@ export default function InternetHistory({onReplay = () => {} }){
         {
             year: "2020",
             label: "2020",
-            name: "First ISPs Emerge",
+            name: "Modern High-Speed Era",
             icon: "🌐",
             desc: "Increased government pressure on telecommunications providers in 2020 triggered massive network upgrades, driving average internet speeds from single digits up to over 80 Mbps. Modern developments followed rapidly, including the entry of a third major telco, the introduction of Starlink satellite internet, and large-scale national fiber backbone projects to connect remote islands and provinces.",
             stats: [
