@@ -11,7 +11,7 @@ const css = `
   .cafe-viewer-frame {
     width: 100%;
     height: clamp(320px, 60vw, 560px);
-    background: radial-gradient(circle at 50% 40%, #0b1622 0%, #000 80%);
+    background: radial-gradient(circle at 50% 40%, #2a1a12 0%, #000 80%);
     border: 1px solid rgba(255,255,255,0.08);
     border-radius: 12px;
     overflow: hidden;
