@@ -16,10 +16,17 @@ export default function ExhibitAudio({ volume = 0.4 }) {
     const alreadyStarted = sessionStorage.getItem(STORAGE_KEY) === 'true';
 
     if (alreadyStarted) {
-      // User already clicked before (resume immediately)
-      audio.play().catch(() => {});
+      // Resume on first mouse move or touch (automatic to the user)
+      const resume = () => {
+        audio.play().catch(() => {});
+        window.removeEventListener('mousemove', resume);
+        window.removeEventListener('touchstart', resume);
+        window.removeEventListener('keydown', resume);
+      };
+      window.addEventListener('mousemove', resume, { once: true });
+      window.addEventListener('touchstart', resume, { once: true });
+      window.addEventListener('keydown', resume, { once: true });
     } else {
-      // First visit (wait for click/keydown)
       const start = () => {
         if (!muted) {
           audio.play().catch(() => {});
