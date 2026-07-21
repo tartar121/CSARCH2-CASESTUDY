@@ -1,4 +1,84 @@
-# Mid-Milestone Development Log
+# Kumusta Mundo: Ang Kaarawan ng Lokal Networks sa Pilipinas
+**CSARCH2 | 3rd Term AY 2025-2026 | Final Milestone Submission (July 2026)**  
+*A Virtual Museum Exhibit & Interactive Architectural Simulation tracing the historic birth and 30-year evolution of Philippine Internet Connectivity.*
+
+**Submitted by:**
+- [Dabuit, Daniel Jedrick C.](https://github.com/danueli)
+- [Go, John William D.](https://github.com/johnwilliam-go)
+- [Liwanag, Ram Miguel C.](https://github.com/Rammy-errorlol)
+- [Lobo, Shirley Marie A.](https://github.com/SAM-lvl1)
+- [Uy, Tara Ysabel P.](https://github.com/tartar121)
+
+**Links:**  
+* **Live Deployment Link:** [https://tartar121.github.io/KumustaMundo/](https://tartar121.github.io/KumustaMundo/)  
+* **GitHub Repository:** [https://github.com/tartar121/KumustaMundo](https://github.com/tartar121/KumustaMundo)
+
+---
+
+## Challenges
+
+Our first challenge was converting a groupmate's vanilla HTML prototype into a proper React component inside Astro's architecture. The original file used `document.getElementById` and global variables, which do not work in React, so all state logic had to be rewritten using `useState` and `useEffect`. Even after the conversion, the simulation looked correct but was completely non-interactive. The fix was adding `client:load` to the component tag in the MDX file, since Astro renders React as static HTML by default and ships no JavaScript without a client directive.
+
+Balancing the development schedule was another challenge. The team had to manage overlapping deliverables, machine projects, and exams across CSINTSY, CSMODEL, LBYARCH, and LBYTRN2 at the same time, which required careful coordination to keep progress moving.
+
+Getting the layout right took more work than expected. The museum template's `global.css` uses a white background, padding, border, and box shadow on the `.article` element, which clashed with our vintage TV aesthetic. We had to override nearly every layout class through a scoped `<style>` block in the MDX file without touching `ExhibitLayout.astro` or `HomepageLayout.astro` since those are shared across all groups.
+
+Mobile responsiveness required a lot of work. The two-column simulation grid was compressing the map and Sprint Network box at anything below full desktop width, and the PLDT node dot was too small to reliably tap on a phone. We raised the responsive breakpoint to 900px, made heights fluid with `clamp()`, and added `@media` overrides at 600px and 400px for minimum tap sizes. The SVG connection line also had to be recalculated on resize since it relies on `getBoundingClientRect` for its coordinates.
+
+The speed comparison tab in `InternetHistory.jsx` had a small CSS scoping issue. The subtitle text was invisible because the `.article p` rule in our MDX style block had `color: #e8dbb5 !important`, producing light cream text on a light cream background. We fixed it by adding `.exhibit-chart-root p` as a more specific selector. Separately, the chart bars were not rendering because the `width` style was referencing a key name that did not match the data array.
+
+The `.glb` 3D model for the Smart Internet Cafe had to be declared in `astro.config.mjs` via `assetsInclude: ['**/*.glb']` because Vite drops unrecognized extensions silently. We also wrapped `<model-viewer>` in a React component since web components need a browser environment to register, which Astro's SSR pass does not provide.
+
+Background music worked on first load but would not resume after navigating away and returning, even with `sessionStorage` tracking prior interaction. Browsers appear to reset autoplay permissions on page navigation, so `audio.play()` on remount was being silently blocked. We switched to `mousemove` and `touchstart` listeners instead, which count as user gestures for autoplay purposes and let the audio resume naturally when the user returns to the page.
+
+---
+
+## Aha Moments & Things Learned
+
+The biggest realization was how intentional Astro's model is. React components are server-rendered to HTML by default and ship with no JavaScript unless you opt in with a client directive. Once we understood this, a lot of bugs made sense: components that looked right but did nothing, state that reset unexpectedly, event listeners that never fired.
+
+We also learned that CSS custom properties participate in the cascade. Defining `--text-secondary` inside `.sim-root` does not make it globally available, and components outside that selector tree get an empty string. Shared variables should always go on `:root`.
+
+The `astro.config.mjs` `base` value also needs to exactly match the GitHub repository name, or every asset path returns a 404 on the deployed site even if everything works locally.
+
+---
+
+## Creative Development
+
+The exhibit is built around the idea of encountering the 1994 Philippine internet connection through a recovered archive terminal. The vintage TV scanline overlay, IBM Plex Mono typography, warm sepia and brown palette, and archive terminal framing were chosen to make the historical content feel like something recovered from a server room rather than written for a textbook. The blinking cursor after headings reinforces the terminal metaphor without being too distracting.
+
+The simulation puts the user in the position of the engineers working that night, selecting the PLDT Makati node, establishing the Sprint link, and watching the TCP/IP handshake print line by line before the "Philippines Online" banner appears. The pacing mirrors the actual sequence of events on March 29, 1994 at 1:15 AM.
+
+The 3D Smart Internet Cafe model grounds the post-1994 story in a physical artifact. The mobile container van that Smart Communications deployed to bring internet access to remote provinces represents the democratization phase that followed, shifting the exhibit from "this is when it happened" to "this is what it looked like for ordinary Filipinos."
+
+Background audio deepens immersion and is kept subtle, with a floating mute button so users stay in control.
+
+---
+
+## Disclosure on the Use of AI/LLM
+
+In compliance with academic integrity guidelines, Large Language Models (LLMs) were used during development for technical troubleshooting, code refactoring, and documentation organization:
+
+**Anthropic Claude:** Assisted with troubleshooting, styling cleanup, React/Astro integration, and 3D model display logic, including migrating model rendering from Three.js to Google's `<model-viewer>`.
+
+**Google Gemini:** Assisted with background audio setup and prototype-to-React conversion guidance.
+
+*All AI-generated outputs were reviewed, tested, and refined by the project members to ensure technical accuracy, consistency with the project's requirements, and originality of the final implementation. The project's design, development decisions, and overall implementation remain the original work of the group.*
+
+---
+
+## Local Setup
+
+```bash
+git clone https://github.com/tartar121/KumustaMundo.git
+cd KumustaMundo
+npm install
+npm run dev
+```
+
+---
+
+# Mid-Milestone Development Log (July 7, 2026)
 ## What We Built
 - Converted the HTML prototype into a React component (`InternetSimulation.jsx`) embedded in an Astro/MDX page
 - Implemented a full dark theme that overrides the museum template styling
