@@ -6,7 +6,10 @@ readingTime: "8 minutes"
 ---
 
 import InternetSimulation from '../components/InternetSimulation.jsx';
+import ExhibitAudio from '../components/ExhibitAudio.jsx';
 import mapImage from '../assets/Metro_manila_map.png';
+
+<ExhibitAudio client:load />
 
 <style>
 {`
@@ -32,14 +35,59 @@ import mapImage from '../assets/Metro_manila_map.png';
     padding: 24px 0 !important;
   }
   .header {
-    display: none !important;
-  }
-  .toc {
-    display: none !important;
-  }
-  .padder {
-    display: none !important;
-  }
+  background: #3a2a22 !important;
+  border-bottom: 2px solid #4A2518 !important;
+}
+.header__titleblock {
+  background: #2a1a12 !important;
+  border: 2px solid #4A2518 !important;
+  box-shadow: none !important;
+  color: #e8dbb5 !important;
+}
+.header__titleblock strong {
+  color: #f0a860 !important;
+  font-family: 'Bebas Neue', monospace !important;
+  letter-spacing: 1px !important;
+}
+.header__titleblock span {
+  color: #e8dbb5 !important;
+  font-family: 'IBM Plex Mono', monospace !important;
+  font-size: 12px !important;
+}
+.button {
+  background: rgba(255,255,255,0.05) !important;
+  border-color: #4A2518 !important;
+  color: #e8dbb5 !important;
+  font-family: 'IBM Plex Mono', monospace !important;
+}
+.button:hover {
+  border-color: #f0a860 !important;
+  color: #f0a860 !important;
+}
+.toc {
+  background: #2a1a12 !important;
+  border: 2px solid #4A2518 !important;
+  box-shadow: 3px 3px #4A2518 !important;
+  color: #e8dbb5 !important;
+}
+.toc h2 {
+  color: #f0a860 !important;
+  font-family: 'IBM Plex Mono', monospace !important;
+  font-size: 12px !important;
+  letter-spacing: 1px !important;
+  border-color: #4A2518 !important;
+}
+.toc__item a {
+  color: #f0a860 !important;
+  font-family: 'IBM Plex Mono', monospace !important;
+  font-size: 13px !important;
+}
+.toc__item a:hover {
+  color: #f5e7bd !important;
+}
+.padder {
+  visibility: hidden !important;
+}
   .content__titlemeta {
     display: none !important;
   }
