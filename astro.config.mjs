@@ -21,7 +21,7 @@ function fixAstroGlob() {
 export default defineConfig({
   integrations: [mdx(), react(), icon()],
   site: 'https://tartar121.github.io',
-  base: 'CSARCH2-CASESTUDY',
+  base: 'KumustaMundo',
   vite: {
     plugins: [fixAstroGlob()],
     assetsInclude: ['**/*.glb'],

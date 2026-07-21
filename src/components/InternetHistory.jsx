@@ -1,8 +1,9 @@
 import {useState} from "react";
 import { css } from './InternetSimulation.jsx';
-
+import SpeedComparison from './SpeedComparison.jsx';
 
 export default function InternetHistory({onReplay = () => {} }){
+    const [activeTab, setActiveTab] = useState('timeline');
     const [activeEra, setActiveEra] = useState(0);
     const eras = [
         {
@@ -83,8 +84,8 @@ export default function InternetHistory({onReplay = () => {} }){
                     border: 2px solid var(--teal);
                     border-radius: 6px;
                     padding: 12px 18px;
-                    marin-bottom: 15px;
-                    gap: 12px
+                    margin-bottom: 15px;
+                    gap: 12px;
                     flex-wrap: wrap;
                 }
                 .sim-connected-status {
@@ -237,23 +238,36 @@ export default function InternetHistory({onReplay = () => {} }){
                     </div>
                 </header>
 
-                <div className="sim-connected-bar">
-                    <div>
-                        <div className="sim-connected-status">
-                            <span>🇵🇭</span> CONNECTED — MARCH 29, 1994 · 01:15 AM
-                        </div>
-                        <div className="sim-connected-sub">
-                            64 kbps leased line - PLDT Makati → Sprint San Francisco - Cisco 7000
-                        </div>
+            <div className="sim-connected-bar">
+                <div>
+                    <div className="sim-connected-status">
+                        <span>🇵🇭</span> CONNECTED — MARCH 29, 1994 · 01:15 AM
                     </div>
-                    <button className="sim-replay-btn" onClick={onReplay}>↻ Replay Simulation</button>
+                    <div className="sim-connected-sub">
+                        64 kbps leased line - PLDT Makati → Sprint San Francisco - Cisco 7000
+                    </div>
                 </div>
+                <button className="sim-replay-btn" onClick={onReplay}>↻ Replay Simulation</button>
+            </div>
 
-                <div className="sim-tabs">
-                    <button className="sim-tab active">TIMELINE</button>
-                    <button className="sim-tab">SPEED COMPARISON</button>
-                </div>
+            {/* wired tab buttons to hook state directly */}
+            <div className="sim-tabs">
+                <button 
+                    className={`sim-tab ${activeTab === 'timeline' ? 'active' : ''}`}
+                    onClick={() => setActiveTab('timeline')}
+                >
+                    TIMELINE
+                </button>
+                <button 
+                    className={`sim-tab ${activeTab === 'speed' ? 'active' : ''}`}
+                    onClick={() => setActiveTab('speed')}
+                >
+                    SPEED COMPARISON
+                </button>
+            </div>
 
+            {/* render split block */}
+            {activeTab === 'timeline' ? (
                 <main>
                     <h2 className="sim-story-title">THE PHILIPPINE INTERNET STORY</h2>
 
@@ -316,6 +330,11 @@ export default function InternetHistory({onReplay = () => {} }){
                         </button>
                     </div>
                 </main>
+                ) : (
+                    <main>
+                        <SpeedComparison />
+                    </main>
+                )}
 
                 <footer className="system-credits">
                     Educational simulation • Based on historical records • PLDT • DOST • NTC Philippines
@@ -324,5 +343,4 @@ export default function InternetHistory({onReplay = () => {} }){
 
         </>
     )
-
 }
