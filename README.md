@@ -59,7 +59,7 @@ Background audio deepens immersion and is kept subtle, with a floating mute butt
 
 In compliance with academic integrity guidelines, Large Language Models (LLMs) were used during development for technical troubleshooting, code refactoring, and documentation organization:
 
-**Anthropic Claude:** Assisted with troubleshooting, styling cleanup, React/Astro integration, and 3D model display logic, including migrating model rendering from Three.js to Google's `<model-viewer>`.
+**Anthropic Claude:** Assisted with debugging, troubleshooting, styling cleanup, React/Astro integration, and 3D model display logic, including migrating model rendering from Three.js to Google's `<model-viewer>`.
 
 **Google Gemini:** Assisted with background audio setup and prototype-to-React conversion guidance.
 
